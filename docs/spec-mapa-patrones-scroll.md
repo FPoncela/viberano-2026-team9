@@ -1,8 +1,8 @@
 # Especificación de Feature: Mapa de patrones de scroll
 
-**Rama**: `001-mapa-patrones-scroll`
-**Creada**: 2026-07-15
-**Estado**: Listo (aclaraciones resueltas 2026-07-15)
+**Rama**: `001-mapa-patrones-scroll`  
+**Creada**: 2026-07-15  
+**Estado**: Listo (aclaraciones resueltas 2026-07-15)  
 **Input**: Lean Canvas — App de bienestar digital para adolescentes ([docs/lean-canvas.md](https://github.com/FPoncela/viberano-2026-team9/blob/main/docs/lean-canvas.md)), Solución #1: "Mapa de patrones de scroll — analítica visual de qué apps/contenido enganchan, a qué hora del día, y cuánto tiempo real se dedica a cada tipo de contenido."
 
 ## Escenarios de usuario y pruebas *(obligatorio)*
