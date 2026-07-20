@@ -1,4 +1,4 @@
-# Viabilidad técnica del "Mapa de patrones de scroll" para _"VibeCheck - La app de bienestar digital para adolescentes (13-18)"_
+# Viabilidad técnica del "Mapa de patrones de scroll para _"VibeCheck - La app de bienestar digital para adolescentes (13-18)"_
 
 ## TL;DR
 - **La suposición central de la spec es correcta a medias y debe matizarse**: en **Android** sí se puede clasificar el uso "por app completa" (Instagram, TikTok, YouTube como unidades) con `UsageStatsManager` + el permiso `PACKAGE_USAGE_STATS`; pero en **iOS no existe** una API pública que entregue datos crudos de uso a una app de auto-conocimiento, y **ninguna red social** ofrece una API en tiempo real para leer cuánto tiempo o qué contenido consume el usuario.
