@@ -3,7 +3,7 @@
 **Rama**: `001-mapa-patrones-scroll`  
 **Creada**: 2026-07-15  
 **Estado**: Listo (aclaraciones resueltas 2026-07-15)  
-**Input**: Lean Canvas — App de bienestar digital para adolescentes ([docs/lean-canvas.md](https://github.com/FPoncela/viberano-2026-team9/blob/main/docs/lean-canvas.md)), Solución #1: "Mapa de patrones de scroll — analítica visual de qué apps/contenido enganchan, a qué hora del día, y cuánto tiempo real se dedica a cada tipo de contenido."
+**Input**: Lean Canvas — VibeCheck - App de bienestar digital para adolescentes ([docs/lean-canvas.md](https://github.com/FPoncela/viberano-2026-team9/blob/main/docs/lean-canvas.md)), Solución #1: "Mapa de patrones de scroll — analítica visual de qué apps/contenido enganchan, a qué hora del día, y cuánto tiempo real se dedica a cada tipo de contenido."
 
 ## Contexto del problema
 Los adolescentes de 13 a 18 años no son conscientes de sus propios patrones de scroll: qué contenido les engancha, en qué momentos del día, y cómo se sienten después de esas sesiones (Problema 2 del Lean Canvas). Las alternativas actuales —límites de tiempo nativos del móvil, apps de bloqueo tipo Forest/One Sec, o control parental— no resuelven esto: se ignoran, se desinstalan a la semana o generan conflicto en casa, porque ninguna le da al adolescente un espejo de su propio comportamiento; todas deciden por él o se lo prohíben, en vez de ayudarle a entenderse. El Mapa de patrones de scroll ataca directamente ese vacío: convierte datos de uso que ya existen en el dispositivo en una vista que el propio adolescente puede interpretar, sin intervención externa, como primer paso hacia el autoconocimiento que promete la propuesta de valor ("descubre qué te engancha, no solo cuánto tiempo pierdes"). 
