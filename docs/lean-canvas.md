@@ -1,4 +1,4 @@
-# Lean Canvas: VibeCheck - App de bienestar digital para adolescentes · 15 julio 2026
+# Lean Canvas: _VibeCheck - La App de bienestar digital para adolescentes_ · 15 julio 2026
 
 ## PROBLEMA
 1. Los adolescentes quieren usar menos el móvil pero no tienen herramientas que les den agencia propia, solo bloqueos externos que odian y burlan.
