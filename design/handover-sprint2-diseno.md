@@ -5,7 +5,7 @@ Contexto para retomar el trabajo de diseño de pantallas donde lo dejamos. Esto 
 ## Punto de partida
 
 - **Producto:** VibeCheck, app de bienestar digital para adolescentes (13-18 años). Propuesta de valor: "Descubre qué te engancha, no solo cuánto tiempo pierdes" — autoconocimiento, no control parental ni prohibición.
-- **Spec de referencia:** `docs/spec-mapa-patrones-scroll.md` (feature "Mapa de patrones de scroll"). De ahí salen las 4 pantallas del sprint. El fichero que se encuentra en `docs/spec.md` es el mismo.
+- **Spec de referencia:** `docs/spec-mapa-patrones-scroll.md` (feature "Mapa de patrones de scroll"). De ahí salen las 4 pantallas del sprint. El fichero que se encuentra en `design/spec.md` es el mismo.
 - **Sprint:** Sprint 2 del reto — solo diseño con IA, nada de código. Entrega 4 de agosto.
 
 ## Las 4 pantallas del happy path (acordadas)
