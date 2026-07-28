@@ -10,8 +10,8 @@ Contexto para retomar el trabajo de diseño de pantallas donde lo dejamos. Esto 
 
 ## Las 4 pantallas del happy path (acordadas)
 
-1. ✅ **Permiso de acceso a datos** (FR-004) — hecha
-2. ✅ **Mi mapa** ⭐ pantalla estrella (Historia 1 + 2) — hecha
+1. ✅ **Permiso de acceso a datos** (FR-004) — hecha - El fichero que se encuentra en `design/vibecheck-01-permiso-datos@3x.png`
+2. ✅ **Mi mapa** ⭐ pantalla estrella (Historia 1 + 2) — hecha - El fichero que se encuentra en `design/vibecheck-02-mi-mapa@3x.png`
 3. ⬜ **Detalle de un ítem** del mapa (una app/tipo de contenido concreto) — pendiente
 4. ⬜ **Comparativa semanal** (Historia 3: esta semana vs. semana anterior) — pendiente
 
