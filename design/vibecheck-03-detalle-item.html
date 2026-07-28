@@ -1,0 +1,183 @@
+<title>VibeCheck · Detalle de ítem</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+  --page-bg: #EDE9E3;
+}
+@media (prefers-color-scheme: dark) { :root { --page-bg: #1C191F; } }
+:root[data-theme="light"] { --page-bg: #EDE9E3; }
+:root[data-theme="dark"]  { --page-bg: #1C191F; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--page-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px 48px;
+}
+
+.phone {
+  width: 310px;
+  background: #2B2730;
+  border-radius: 48px;
+  padding: 13px;
+  box-shadow: 0 4px 0 #18151C, 0 28px 68px rgba(0,0,0,.42), 0 8px 20px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.07);
+  position: relative;
+}
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 13px; left: 50%;
+  transform: translateX(-50%);
+  width: 88px; height: 7px;
+  background: #1A171E;
+  border-radius: 0 0 5px 5px;
+  z-index: 2;
+}
+
+.screen {
+  background: #FAF8F5;
+  border-radius: 36px;
+  overflow: hidden;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+}
+.status-bar {
+  padding: 18px 20px 0;
+  font-size: 13px; font-weight: 600; color: #2B2730;
+  text-align: center; letter-spacing: -.01em;
+}
+.screen-body { flex: 1; padding: 0 18px; display: flex; flex-direction: column; }
+
+.app-icon {
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px;
+  flex-shrink: 0;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(43,39,48,.06);
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.back-nav {
+  display: flex; align-items: center; gap: 5px;
+  padding: 10px 0 2px;
+  color: #7A7480; font-size: 13px; font-weight: 500;
+}
+.section-head { font-size: 17px; font-weight: 700; color: #2B2730; margin-bottom: 1px; }
+.section-sub  { font-size: 12px; color: #7A7480; margin-bottom: 10px; }
+.stats-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.stat-chip {
+  flex: 1; background: #fff;
+  border-radius: 12px; padding: 8px 10px;
+  box-shadow: 0 2px 8px rgba(43,39,48,.05);
+}
+.stat-v { font-size: 15px; font-weight: 700; color: #2B2730; line-height: 1.2; }
+.stat-l { font-size: 10px; color: #7A7480; margin-top: 1px; line-height: 1.3; }
+.chart-insight { font-size: 13px; font-weight: 600; color: #E8967A; margin-top: 6px; }
+.home-bar-wrap { display: flex; justify-content: center; padding: 5px 0 8px; background: #FAF8F5; }
+.home-bar { width: 100px; height: 4px; background: rgba(43,39,48,.22); border-radius: 2px; }
+</style>
+
+<div class="phone">
+  <div class="screen">
+    <div class="status-bar">9:41</div>
+    <div class="screen-body">
+
+      <!-- Back nav -->
+      <div class="back-nav">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 13L5 8L10 3" stroke="#7A7480" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Mi mapa
+      </div>
+
+      <!-- App header -->
+      <div style="display:flex;align-items:center;gap:12px;margin:10px 0 14px">
+        <div class="app-icon" style="background:#E8E3F5;color:#6B5B95">Ti</div>
+        <div>
+          <div style="font-size:26px;font-weight:700;color:#2B2730;line-height:1.2">TikTok</div>
+          <div style="font-size:12px;color:#7A7480">Vídeo</div>
+        </div>
+      </div>
+
+      <!-- Hero time card -->
+      <div class="card" style="text-align:center;padding:18px 14px">
+        <div style="font-size:11px;color:#7A7480;letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px">Esta semana</div>
+        <div style="font-size:44px;font-weight:700;color:#2B2730;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums">2h 15m</div>
+        <div style="font-size:12px;color:#7A7480;margin-top:5px">últimos 7 días</div>
+      </div>
+
+      <!-- Stats chips -->
+      <div class="stats-row">
+        <div class="stat-chip">
+          <div class="stat-v">14</div>
+          <div class="stat-l">sesiones</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-v">47 min</div>
+          <div class="stat-l">sesión<br>más larga</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-v">9:42</div>
+          <div class="stat-l">primera<br>apertura</div>
+        </div>
+      </div>
+
+      <!-- Hourly chart -->
+      <div class="section-head">¿Cuándo la abres?</div>
+      <div class="section-sub">Por horas, esta semana</div>
+      <div class="card">
+        <svg id="chart3" style="display:block;width:100%" viewBox="0 0 264 110" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-insight">Tu pico es a las 22h</div>
+      </div>
+
+    </div>
+    <div class="home-bar-wrap"><div class="home-bar"></div></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const svg = document.getElementById('chart3');
+  const heights = [8, 5, 7, 15, 22, 18, 30, 24, 44, 70, 100, 72];
+  const colors  = [
+    '#DEDAD5','#DEDAD5','#DEDAD5','#DEDAD5',
+    '#CAC3E4','#CAC3E4',
+    '#B9B1D8','#B9B1D8',
+    '#F0BBA6','#F0BBA6',
+    '#E8967A',
+    '#F0BBA6'
+  ];
+  const W = 264, bottom = 90, maxH = 80;
+  const left = 6, right = W - 6, chartW = right - left;
+  const n = heights.length;
+  const slotW = chartW / n;
+  const bw = slotW * 0.62;
+  const boff = (slotW - bw) / 2;
+  const r = 3;
+
+  let html = `<line x1="${left}" y1="${bottom+1}" x2="${right}" y2="${bottom+1}" stroke="#EAE5DF" stroke-width="1"/>`;
+  heights.forEach((pct, i) => {
+    const h = (pct / 100) * maxH;
+    if (h < 1) return;
+    const x  = left + i * slotW + boff;
+    const ty = bottom - h;
+    const rr = Math.min(r, h * 0.48, bw * 0.48);
+    html += `<path d="M ${x.toFixed(1)},${bottom} L ${x.toFixed(1)},${(ty+rr).toFixed(1)} Q ${x.toFixed(1)},${ty.toFixed(1)} ${(x+rr).toFixed(1)},${ty.toFixed(1)} L ${(x+bw-rr).toFixed(1)},${ty.toFixed(1)} Q ${(x+bw).toFixed(1)},${ty.toFixed(1)} ${(x+bw).toFixed(1)},${(ty+rr).toFixed(1)} L ${(x+bw).toFixed(1)},${bottom} Z" fill="${colors[i]}"/>`;
+  });
+  ['0h','6h','12h','18h','24h'].forEach((lbl, i) => {
+    const lx = (left + i * 3 * slotW).toFixed(1);
+    html += `<text x="${lx}" y="107" font-size="10" fill="#7A7480" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${lbl}</text>`;
+  });
+  svg.innerHTML = html;
+})();
+</script>
