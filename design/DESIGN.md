@@ -84,7 +84,7 @@ Margen lateral de pantalla: 20px. Mucho aire entre bloques — la app debe respi
 
 - **Tarjetas:** radio 16px, sin bordes duros, sombra muy suave (`0 2px 12px rgba(43,39,48,0.06)`).
 - **Iconos:** trazo (outline), nunca relleno sólido agresivo — línea de 1.5-2px, esquinas redondeadas.
-- **Gráficas del mapa de patrones:** formas orgánicas (curvas suaves, blobs), no barras rígidas de "dashboard corporativo" — refuerza que esto es autoconocimiento, no un informe de rendimiento.
+- **Gráficas del mapa de patrones:** barras verticales con esquinas superiores redondeadas, espaciado generoso entre ellas y colores cálidos (coral para el pico, tonos neutros/lavanda suave para el resto) — un estilo cuidado y profesional, pero sin ejes agresivos, sin rejillas densas ni aspecto de "informe de rendimiento" corporativo. El eje horizontal siempre en horas reales (ej. 0h, 6h, 12h, 18h, 24h), nunca en etiquetas sueltas tipo "Mañana/Tarde".
 
 ---
 
@@ -104,3 +104,4 @@ Margen lateral de pantalla: 20px. Mucho aire entre bloques — la app debe respi
 - Navegación inferior (bottom tab bar) para las secciones principales, con zona táctil de 48px+.
 - Botón de retroceso siempre visible en pantallas de detalle.
 - Evitar todo lo que imite "notificaciones sin leer" o badges rojos — usar puntos suaves en `--color-accent` si hace falta indicar novedad.
+- **Filtros:** se activan mediante un botón de filtro (icono de embudo + texto "Filtros", con badge numérico si hay filtros activos), que abre una hoja/modal para elegir opciones — nunca como chips seleccionables permanentes en la pantalla principal.
