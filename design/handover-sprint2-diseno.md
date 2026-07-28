@@ -34,7 +34,7 @@ El fichero `DESIGN.md` ya está en `design/` (o listo para subir). Cosas importa
 - Iconografía: outline, trazo 1.5-2px, nunca relleno sólido agresivo.
 - Tarjetas blancas (`#FFFFFF`), radio 16px, sin bordes duros.
 - Botón primario: altura 48px, radio 14px, coral, texto blanco.
-- Los PNG entregados: `vibecheck-01-permiso-datos.png` y `vibecheck-02-mi-mapa.png`.
+- Los PNG entregados: `design/vibecheck-01-permiso-datos@3x.png` y `design/vibecheck-02-mi-mapa@3x.png`.
 
 ## Para tu compañero: cómo pedir las pantallas 3 y 4
 
@@ -51,6 +51,6 @@ Cuando ambas estén validadas, quedan los pasos 6 y 7 del sprint: guardar todo e
 ## Ficheros a subir a `design/` en el repo
 
 - `DESIGN.md`
-- `vibecheck-01-permiso-datos.png`
-- `vibecheck-02-mi-mapa.png`
+- `design/vibecheck-01-permiso-datos@3x.png`
+- `design/vibecheck-02-mi-mapa@3x.png`
 - (pendiente) pantallas 3 y 4 cuando estén listas
