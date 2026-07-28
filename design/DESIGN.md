@@ -21,16 +21,18 @@ Paleta calmada e introspectiva, deliberadamente alejada de los rojos/rosas satur
 |---|---|---|
 | `--color-bg` | `#FAF8F5` | Fondo principal (cálido, no blanco clínico) |
 | `--color-surface` | `#FFFFFF` | Tarjetas, superficies elevadas |
-| `--color-primary` | `#6B5B95` | Lavanda profundo — acciones principales, iconos activos |
-| `--color-primary-soft` | `#E8E3F5` | Fondos suaves, estados activos sutiles |
-| `--color-accent` | `#E8967A` | Coral cálido — acentos, momentos de "descubrimiento" |
-| `--color-accent-soft` | `#FBE9E1` | Fondos de acento suaves |
+| `--color-primary` | `#E8967A` | Coral cálido — CTA principal, botones, iconos activos |
+| `--color-primary-soft` | `#FBE9E1` | Fondos suaves, estados activos sutiles |
+| `--color-accent` | `#6B5B95` | Lavanda — acento secundario (iconos de privacidad, detalles) |
+| `--color-accent-soft` | `#E8E3F5` | Fondos de acento suaves |
 | `--color-text-primary` | `#2B2730` | Texto principal (nunca negro puro) |
 | `--color-text-secondary` | `#7A7480` | Texto secundario, metadatos |
 | `--color-border` | `#EAE5DF` | Bordes y separadores sutiles |
 | `--color-success` | `#7A9E7E` | Confirmaciones (verde apagado, no neón) |
 | `--color-caution` | `#D4A24C` | Avisos (ámbar suave — nunca rojo de alarma) |
+| `--color-on-primary` | `#FFFFFF` | Texto sobre superficies coral (botones) |
 
+📌 **El color de acción principal (botones, CTA) es siempre el coral cálido**, nunca la lavanda — la lavanda queda reservada para acentos secundarios como iconos de privacidad.
 📌 **Nunca usar rojo saturado ni rosa/magenta neón.** Esos colores son el lenguaje visual de las apps que generan la adicción que combatimos.
 
 ---
@@ -102,4 +104,3 @@ Margen lateral de pantalla: 20px. Mucho aire entre bloques — la app debe respi
 - Navegación inferior (bottom tab bar) para las secciones principales, con zona táctil de 48px+.
 - Botón de retroceso siempre visible en pantallas de detalle.
 - Evitar todo lo que imite "notificaciones sin leer" o badges rojos — usar puntos suaves en `--color-accent` si hace falta indicar novedad.
-
