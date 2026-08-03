@@ -2,12 +2,10 @@
 
 ## 🖼️ Pantallas
 
-| # | Pantalla | Qué hace el usuario |
-|---|---|---|
-| 1 | Permiso de acceso a datos | Entiende por qué la app necesita ver su historial de uso y decide si conceder el permiso. |
-| 2 | Mi mapa ⭐ | Ve de un vistazo qué apps usa más, cuánto tiempo y en qué franjas horarias del día cae más. |
-| 3 | Detalle de ítem | Toca una app concreta y descubre su tiempo total, número de sesiones y su patrón horario en detalle. |
-| 4 | Comparativa semanal | Compara su uso de cada app esta semana vs. la anterior para ver si su patrón ha cambiado. |
+1. **Permiso de acceso a datos** — Entiende por qué la app necesita ver su historial de uso y decide si conceder el permiso.
+2. **Mi mapa** ⭐ — Ve de un vistazo qué apps usa más, cuánto tiempo y en qué franjas horarias del día cae más.
+3. **Detalle de ítem** — Toca una app concreta y descubre su tiempo total, número de sesiones y su patrón horario en detalle.
+4. **Comparativa semanal** — Compara su uso de cada app esta semana vs. la anterior para ver si su patrón ha cambiado.
 
 ## ⭐ Pantalla estrella
 
