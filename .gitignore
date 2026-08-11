@@ -1,1 +1,15 @@
 .DS_Store
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Node / Vite
+node_modules
+dist
+dist-ssr
+*.local
+*.log
+npm-debug.log*
+.vscode/*
+!.vscode/extensions.json
+.idea
