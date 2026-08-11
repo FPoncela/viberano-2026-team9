@@ -10,8 +10,8 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 2 · Datos simulados
 
-- [ ] **T2.1 — Modelo de datos**: definir tipo/interfaz de "Sesión de uso" (app, tipo de contenido, franja horaria, duración) y "Mapa de patrones" (agregación), según entidades clave de `design/spec.md`.
-- [ ] **T2.2 — Fixtures de datos**: generar 3 datasets de ejemplo: (a) usuario con 7+ días de uso normal, (b) usuario con menos de 3 días de uso, (c) usuario sin permiso concedido. Probar que cada dataset se puede importar y usar en pantalla.
+- [x] **T2.1 — Modelo de datos**: definir tipo/interfaz de "Sesión de uso" (app, tipo de contenido, franja horaria, duración) y "Mapa de patrones" (agregación), según entidades clave de `design/spec.md`.
+- [x] **T2.2 — Fixtures de datos**: generar 3 datasets de ejemplo: (a) usuario con 7+ días de uso normal, (b) usuario con menos de 3 días de uso, (c) usuario sin permiso concedido. Probar que cada dataset se puede importar y usar en pantalla.
 
 ## Bloque 3 · Pantalla 1 — Permiso de acceso a datos
 
