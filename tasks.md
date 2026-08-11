@@ -20,10 +20,10 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 4 · Pantalla 2 — Mi mapa (pantalla estrella) ⭐
 
-- [ ] **T4.1 — Lista de apps/tipo de contenido**: mostrar apps usadas y tiempo dedicado a cada una, agrupado, según `design/vibecheck-02-mi-mapa@3x.png`.
-- [ ] **T4.2 — Vista por franjas horarias**: gráfica de barras de los últimos 7 días, eje en horas reales (0h, 6h, 12h, 18h, 24h), sin rejilla densa, según estilo de `DESIGN.md`.
-- [ ] **T4.3 — Estado "menos de 3 días de uso"**: con el dataset (b), mostrar el aviso correspondiente en vez de un mapa vacío o parcial (escenario 3, Historia 1).
-- [ ] **T4.4 — Navegación a detalle**: cada app/tipo de contenido de la lista es tocable y lleva a la Pantalla 3.
+- [x] **T4.1 — Lista de apps/tipo de contenido**: mostrar apps usadas y tiempo dedicado a cada una, agrupado, según `design/vibecheck-02-mi-mapa@3x.png`.
+- [x] **T4.2 — Vista por franjas horarias**: gráfica de barras de los últimos 7 días, eje en horas reales (0h, 6h, 12h, 18h, 24h), sin rejilla densa, según estilo de `DESIGN.md`.
+- [x] **T4.3 — Estado "menos de 3 días de uso"**: con el dataset (b), mostrar el aviso correspondiente en vez de un mapa vacío o parcial (escenario 3, Historia 1).
+- [x] **T4.4 — Navegación a detalle**: cada app/tipo de contenido de la lista es tocable y lleva a la Pantalla 3.
 
 ## Bloque 5 · Pantalla 3 — Detalle de ítem
 
