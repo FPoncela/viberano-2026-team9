@@ -1,5 +1,22 @@
+import { formatearFechaISO } from './fecha'
+
 /** @typedef {import('./types.js').SesionDeUso} SesionDeUso */
 /** @typedef {import('./types.js').MapaDePatrones} MapaDePatrones */
+
+/**
+ * Filtra sesiones a los últimos `dias` días (incluyendo hoy) — la ventana fija
+ * de FR-003, sin selector de rango.
+ *
+ * @param {SesionDeUso[]} sesiones
+ * @param {number} dias
+ * @returns {SesionDeUso[]}
+ */
+export function filtrarUltimosDias(sesiones, dias) {
+  const limite = new Date()
+  limite.setDate(limite.getDate() - (dias - 1))
+  const limiteStr = formatearFechaISO(limite)
+  return sesiones.filter((sesion) => sesion.fecha >= limiteStr)
+}
 
 /**
  * Agrega una lista de sesiones de uso en un Mapa de patrones (FR-001, FR-002, FR-003).

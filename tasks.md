@@ -27,8 +27,8 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 5 · Pantalla 3 — Detalle de ítem
 
-- [ ] **T5.1 — Pantalla de detalle**: nombre de app/contenido, tiempo total, desglose por franja horaria (reutilizando el componente de barras), según `design/vibecheck-03-detalle-item.html`.
-- [ ] **T5.2 — Navegación de vuelta**: botón de retroceso a "Mi mapa" (no tab bar), estado se mantiene al volver.
+- [x] **T5.1 — Pantalla de detalle**: nombre de app/contenido, tiempo total, desglose por franja horaria (reutilizando el componente de barras), según `design/vibecheck-03-detalle-item.html`.
+- [x] **T5.2 — Navegación de vuelta**: botón de retroceso a "Mi mapa" (no tab bar), estado se mantiene al volver.
 
 ## Bloque 6 · Pantalla 4 — Comparativa semanal (si da tiempo, P2)
 

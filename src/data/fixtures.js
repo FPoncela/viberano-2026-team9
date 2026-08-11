@@ -1,3 +1,5 @@
+import { formatearFechaISO } from './fecha'
+
 /** @typedef {import('./types.js').SesionDeUso} SesionDeUso */
 
 const CATALOGO_APPS = ['TikTok', 'Instagram', 'YouTube', 'WhatsApp', 'Spotify']
@@ -18,11 +20,6 @@ function elegirHora() {
   return Math.random() < 0.7 ? elegir(HORAS_PICO) : entre(0, 23)
 }
 
-function formatearFecha(date) {
-  const pad = (n) => String(n).padStart(2, '0')
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
-}
-
 /**
  * Genera sesiones de uso simuladas para los últimos `dias` días (incluyendo hoy).
  *
@@ -37,7 +34,7 @@ export function generarSesiones(dias) {
   for (let offset = 0; offset < dias; offset++) {
     const fechaDia = new Date(hoy)
     fechaDia.setDate(hoy.getDate() - offset)
-    const fecha = formatearFecha(fechaDia)
+    const fecha = formatearFechaISO(fechaDia)
     const numSesionesDelDia = entre(3, 7)
 
     for (let i = 0; i < numSesionesDelDia; i++) {

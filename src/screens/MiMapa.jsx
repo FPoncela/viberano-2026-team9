@@ -1,7 +1,7 @@
 import BarraHoraria from '../components/BarraHoraria'
 import AppRow from '../components/AppRow'
 import Card from '../components/Card'
-import { construirMapaDePatrones } from '../data/mapaPatrones'
+import { construirMapaDePatrones, filtrarUltimosDias } from '../data/mapaPatrones'
 import { datasetUsoNormal } from '../data/fixtures'
 
 function IconoFiltro() {
@@ -19,7 +19,7 @@ function IconoFiltro() {
 }
 
 function MiMapa({ onSeleccionarApp }) {
-  const mapa = construirMapaDePatrones(datasetUsoNormal)
+  const mapa = construirMapaDePatrones(filtrarUltimosDias(datasetUsoNormal, 7))
 
   if (mapa.diasConDatos < 3) {
     return (
