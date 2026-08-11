@@ -1,18 +1,31 @@
+import { useState } from 'react'
+import Button from './components/Button'
+import Card from './components/Card'
+import TabBar from './components/TabBar'
+
+const TABS = [
+  { id: 'mapa', label: 'Mi mapa', icon: '🗺️' },
+  { id: 'comparativa', label: 'Comparativa', icon: '📊' },
+]
+
 function App() {
+  const [activeTab, setActiveTab] = useState('mapa')
+
   return (
-    <div id="app" className="p-md flex flex-col gap-md">
-      <h1 className="text-h1">Mi mapa</h1>
-      <h2 className="text-h2">Esta semana</h2>
-      <p className="text-body text-text-secondary">
-        Prueba de tokens de DESIGN.md: color, tipografía y espaciado.
-      </p>
-      <div className="rounded-card bg-surface p-md shadow-sm border border-border">
-        <p className="text-caption text-text-secondary">Tarjeta de ejemplo</p>
+    <div id="app" className="flex flex-col gap-md p-md pb-20">
+      <h1 className="text-h1">Componentes base</h1>
+
+      <Card>
+        <p className="text-caption text-text-secondary">Tarjeta</p>
         <p className="text-h3">TikTok · 42 min</p>
+      </Card>
+
+      <div className="flex flex-col gap-sm">
+        <Button variant="primary">Botón primario</Button>
+        <Button variant="secondary">Botón secundario</Button>
       </div>
-      <button className="rounded-btn bg-primary text-on-primary h-12 px-md">
-        Botón primario
-      </button>
+
+      <TabBar tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
   )
 }

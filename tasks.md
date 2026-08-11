@@ -4,9 +4,9 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 1 · Base del proyecto
 
-- [ ] **T1.1 — Scaffold del proyecto**: crear proyecto React + Vite + Tailwind (o equivalente en Lovable), estructura de carpetas mínima (`components/`, `data/`, `screens/`). Probar que arranca y muestra una pantalla en blanco en el móvil (navegador, viewport móvil).
-- [ ] **T1.2 — Tokens de diseño**: trasladar a variables CSS / config de Tailwind los colores, tipografía y espaciados de `design/DESIGN.md` (paleta coral/lavanda, tipografía, radios, espaciado de 8px). Probar con una pantalla de ejemplo que usa los tokens.
-- [ ] **T1.3 — Componentes base**: botón primario y secundario (48px alto, radio 14px), tarjeta (radio 16px, sombra suave), bottom tab bar. Probar cada componente aislado (Storybook-like o pantalla de pruebas).
+- [x] **T1.1 — Scaffold del proyecto**: crear proyecto React + Vite + Tailwind (o equivalente en Lovable), estructura de carpetas mínima (`components/`, `data/`, `screens/`). Probar que arranca y muestra una pantalla en blanco en el móvil (navegador, viewport móvil).
+- [x] **T1.2 — Tokens de diseño**: trasladar a variables CSS / config de Tailwind los colores, tipografía y espaciados de `design/DESIGN.md` (paleta coral/lavanda, tipografía, radios, espaciado de 8px). Probar con una pantalla de ejemplo que usa los tokens.
+- [x] **T1.3 — Componentes base**: botón primario y secundario (48px alto, radio 14px), tarjeta (radio 16px, sombra suave), bottom tab bar. Probar cada componente aislado (Storybook-like o pantalla de pruebas).
 
 ## Bloque 2 · Datos simulados
 
