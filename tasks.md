@@ -15,8 +15,8 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 3 · Pantalla 1 — Permiso de acceso a datos
 
-- [ ] **T3.1 — Pantalla de permiso**: construir según `design/vibecheck-01-permiso-datos@3x.png`, con el microcopy de `DESIGN.md` ("Para mostrarte tu propio mapa..."). Botón que simula conceder el permiso.
-- [ ] **T3.2 — Estado sin permiso**: si el permiso no está concedido, cualquier intento de entrar a "Mi mapa" redirige aquí. Probar el escenario de aceptación 2 de la Historia 1 (spec.md).
+- [x] **T3.1 — Pantalla de permiso**: construir según `design/vibecheck-01-permiso-datos@3x.png`, con el microcopy de `DESIGN.md` ("Para mostrarte tu propio mapa..."). Botón que simula conceder el permiso.
+- [x] **T3.2 — Estado sin permiso**: si el permiso no está concedido, cualquier intento de entrar a "Mi mapa" redirige aquí. Probar el escenario de aceptación 2 de la Historia 1 (spec.md).
 
 ## Bloque 4 · Pantalla 2 — Mi mapa (pantalla estrella) ⭐
 
