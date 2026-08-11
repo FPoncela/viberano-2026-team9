@@ -51,8 +51,9 @@ export function generarSesiones(dias) {
   return sesiones
 }
 
-// (a) Usuario con 7+ días de uso normal.
-export const datasetUsoNormal = generarSesiones(9)
+// (a) Usuario con 7+ días de uso normal (15 días: cubre también las 2 semanas
+// completas que necesita la comparativa semanal del Bloque 6).
+export const datasetUsoNormal = generarSesiones(15)
 
 // (b) Usuario con menos de 3 días de uso (escenario de aceptación 3, Historia 1).
 export const datasetPocosDias = generarSesiones(2)

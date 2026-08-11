@@ -32,8 +32,8 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 6 · Pantalla 4 — Comparativa semanal (si da tiempo, P2)
 
-- [ ] **T6.1 — Pantalla de comparativa**: esta semana vs. semana anterior por app/tipo de contenido, según `design/vibecheck-04-comparativa-semanal.html`.
-- [ ] **T6.2 — Estado sin histórico suficiente**: con menos de 2 semanas de datos, mostrar aviso en vez de comparación (escenario 2, Historia 3).
+- [x] **T6.1 — Pantalla de comparativa**: esta semana vs. semana anterior por app/tipo de contenido, según `design/vibecheck-04-comparativa-semanal.html`.
+- [x] **T6.2 — Estado sin histórico suficiente**: con menos de 2 semanas de datos, mostrar aviso en vez de comparación (escenario 2, Historia 3).
 
 ## Bloque 7 · Prueba end-to-end y pulido
 

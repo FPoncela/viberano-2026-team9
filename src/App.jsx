@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PermisoDatos from './screens/PermisoDatos'
 import MiMapa from './screens/MiMapa'
 import DetalleItem from './screens/DetalleItem'
+import Comparativa from './screens/Comparativa'
 import TabBar from './components/TabBar'
 
 const TABS = [
@@ -39,14 +40,7 @@ function App() {
 
   return (
     <>
-      {screenAMostrar === 'comparativa' ? (
-        <div className="min-h-svh flex flex-col items-center justify-center gap-md p-md pb-24 text-center">
-          <h1 className="text-h1">Comparativa</h1>
-          <p className="text-body text-text-secondary">Se construye en el Bloque 6 (si da tiempo).</p>
-        </div>
-      ) : (
-        <MiMapa onSeleccionarApp={irADetalle} />
-      )}
+      {screenAMostrar === 'comparativa' ? <Comparativa /> : <MiMapa onSeleccionarApp={irADetalle} />}
       <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />
     </>
   )
