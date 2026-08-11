@@ -37,9 +37,9 @@ Desglose de `plan.md` en tareas pequeñas, cada una construible y probable en un
 
 ## Bloque 7 · Prueba end-to-end y pulido
 
-- [ ] **T7.1 — Flujo completo con el dedo**: en el móvil (navegador), recorrer permiso → Mi mapa → detalle → (comparativa si existe) sin fricciones.
-- [ ] **T7.2 — Cotejo contra DESIGN.md**: revisar cada pantalla construida junto a su mockup/PNG del Sprint 2; corregir cualquier desviación de color, tipografía o tono de copy — no rediseñar desde cero.
-- [ ] **T7.3 — Commit y push final**: todo el código en el repositorio de GitHub, listo para la entrega del 18 de agosto.
+- [x] **T7.1 — Flujo completo con el dedo**: en el móvil (navegador), recorrer permiso → Mi mapa → detalle → (comparativa si existe) sin fricciones.
+- [x] **T7.2 — Cotejo contra DESIGN.md**: revisar cada pantalla construida junto a su mockup/PNG del Sprint 2; corregir cualquier desviación de color, tipografía o tono de copy — no rediseñar desde cero.
+- [ ] **T7.3 — Commit y push final**: todo el código en el repositorio de GitHub, listo para la entrega del 18 de agosto. (Commits locales hechos; el push queda pendiente de confirmación.)
 
 ## Notas para la entrega
 
