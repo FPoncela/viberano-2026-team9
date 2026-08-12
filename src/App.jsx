@@ -5,10 +5,11 @@ import DetalleItem from './screens/DetalleItem'
 import Comparativa from './screens/Comparativa'
 import TabBar from './components/TabBar'
 import BarraEstado from './components/BarraEstado'
+import { IconoMapaTab, IconoComparativaTab } from './components/IconosTab'
 
 const TABS = [
-  { id: 'mapa', label: 'Mapa', icon: '🗺️' },
-  { id: 'comparativa', label: 'Comparativa', icon: '📊' },
+  { id: 'mapa', label: 'Mapa', icon: IconoMapaTab },
+  { id: 'comparativa', label: 'Comparativa', icon: IconoComparativaTab },
 ]
 
 function App() {
