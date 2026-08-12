@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
 
@@ -24,7 +25,9 @@ function IconoDispositivo() {
   )
 }
 
-function PermisoDatos({ onConceder, onDeclinar }) {
+function PermisoDatos({ onConceder }) {
+  const [declinado, setDeclinado] = useState(false)
+
   return (
     <div className="min-h-svh flex flex-col px-md pt-xl pb-lg gap-lg text-center">
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
@@ -55,12 +58,26 @@ function PermisoDatos({ onConceder, onDeclinar }) {
       </div>
 
       <div className="mt-auto flex flex-col gap-sm">
+        {declinado && (
+          <Card className="text-left">
+            <p className="text-body text-text-secondary">
+              Vale, lo entendemos. Pero sin este permiso no podemos dibujar tu mapa todavía — en
+              cuanto quieras verlo, pulsa "Dar acceso".
+            </p>
+          </Card>
+        )}
         <Button variant="primary" onClick={onConceder}>
           Dar acceso
         </Button>
-        <button type="button" onClick={onDeclinar} className="text-body text-text-secondary py-sm">
-          Ahora no
-        </button>
+        {!declinado && (
+          <button
+            type="button"
+            onClick={() => setDeclinado(true)}
+            className="text-body text-text-secondary py-sm"
+          >
+            Ahora no
+          </button>
+        )}
       </div>
     </div>
   )

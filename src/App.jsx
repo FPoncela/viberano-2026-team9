@@ -4,6 +4,7 @@ import MiMapa from './screens/MiMapa'
 import DetalleItem from './screens/DetalleItem'
 import Comparativa from './screens/Comparativa'
 import TabBar from './components/TabBar'
+import BarraEstado from './components/BarraEstado'
 
 const TABS = [
   { id: 'mapa', label: 'Mapa', icon: '🗺️' },
@@ -30,18 +31,24 @@ function App() {
     setScreen('detalle')
   }
 
+  let contenido
   if (screenAMostrar === 'permiso') {
-    return <PermisoDatos onConceder={concederPermiso} onDeclinar={() => setScreen('permiso')} />
-  }
-
-  if (screenAMostrar === 'detalle') {
-    return <DetalleItem app={appSeleccionada} onVolver={() => setScreen('mapa')} />
+    contenido = <PermisoDatos onConceder={concederPermiso} />
+  } else if (screenAMostrar === 'detalle') {
+    contenido = <DetalleItem app={appSeleccionada} onVolver={() => setScreen('mapa')} />
+  } else {
+    contenido = (
+      <>
+        {screenAMostrar === 'comparativa' ? <Comparativa /> : <MiMapa onSeleccionarApp={irADetalle} />}
+        <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />
+      </>
+    )
   }
 
   return (
     <>
-      {screenAMostrar === 'comparativa' ? <Comparativa /> : <MiMapa onSeleccionarApp={irADetalle} />}
-      <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />
+      <BarraEstado />
+      {contenido}
     </>
   )
 }
