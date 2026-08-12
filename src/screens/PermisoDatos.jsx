@@ -1,20 +1,7 @@
 import { useState } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
-
-function IconoMapa() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-primary">
-      <path
-        d="M5 19h14M8 19v-6M12 19V8M16 19v-4"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
+import { IconoMapaTab } from '../components/IconosTab'
 
 function IconoDispositivo() {
   return (
@@ -31,7 +18,7 @@ function PermisoDatos({ onConceder }) {
   return (
     <div className="min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
-        <IconoMapa />
+        <IconoMapaTab className="w-10 h-10 text-primary" />
       </div>
 
       <h1 className="text-h1">Antes de ver tu mapa</h1>
