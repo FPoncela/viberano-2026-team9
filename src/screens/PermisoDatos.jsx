@@ -29,7 +29,7 @@ function PermisoDatos({ onConceder }) {
   const [declinado, setDeclinado] = useState(false)
 
   return (
-    <div className="min-h-svh flex flex-col px-md pt-xl pb-lg gap-lg text-center">
+    <div className="min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
         <IconoMapa />
       </div>
