@@ -4,6 +4,10 @@
 
 https://github.com/FPoncela/viberano-2026-team9 — `plan.md`, `tasks.md` y la app (React + Vite + Tailwind) en la raíz del repo.
 
+## 🎬 Demo
+
+En [`demo/vibecheck-landing.html`](demo/vibecheck-landing.html) hay una landing con el vídeo narrado del recorrido completo por el MVP (permiso de acceso, Mi mapa, detalle por app, comparativa semanal y filtro por categoría), embebido y listo para verse abriendo el fichero en el navegador. El vídeo también está disponible suelto en [`demo/vibecheck-demo-narrado.mp4`](demo/vibecheck-demo-narrado.mp4).
+
 ## ⭐ Qué funciona ya
 
 - **Mi mapa** (pantalla estrella): gráfica de franjas horarias de los últimos 7 días con el pico marcado, lista de apps usadas con tiempo agrupado, y filtro por categoría funcional.
