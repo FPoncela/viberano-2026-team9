@@ -633,7 +633,7 @@
         cuándo caes más, en qué apps, y cuánto ha cambiado esta semana. <strong>Sin sermones. Sin compartirlo con nadie.</strong>
       </p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="#demo">
+        <a class="btn-primary" href="#demo" id="heroPlayCta">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           Ver el MVP en acción
         </a>
@@ -777,10 +777,20 @@
 
     var video = document.getElementById('demoVideo');
     var playBtn = document.getElementById('playBtn');
-    playBtn.addEventListener('click', function () {
+    var heroPlayCta = document.getElementById('heroPlayCta');
+
+    function reproducirDemo() {
       video.controls = true;
       video.play();
       playBtn.classList.add('hidden');
+    }
+
+    playBtn.addEventListener('click', reproducirDemo);
+
+    heroPlayCta.addEventListener('click', function (event) {
+      event.preventDefault();
+      document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      reproducirDemo();
     });
     video.addEventListener('pause', function () {
       if (video.currentTime > 0 && !video.ended) return;
