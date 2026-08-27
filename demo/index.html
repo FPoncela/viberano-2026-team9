@@ -249,6 +249,26 @@
 
   .btn-primary svg { width: 15px; height: 15px; }
 
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
   .hero-cta-note {
     font-size: 13.5px;
     color: var(--ink-dim);
@@ -636,6 +656,10 @@
         <a class="btn-primary" href="#demo" id="heroPlayCta">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           Ver el MVP en acción
+        </a>
+        <a class="btn-secondary" href="./app/">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Probar la app
         </a>
         <span class="hero-cta-note">70s narrados · grabado sobre el build real</span>
       </div>
