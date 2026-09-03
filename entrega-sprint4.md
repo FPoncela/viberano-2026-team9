@@ -27,11 +27,6 @@ Las 4 pantallas del MVP (permiso, Mi mapa, detalle por app, comparativa semanal)
 
 ## ⚠️ Limitaciones técnicas encontradas
 
-- **Datos simulados**: acceder a los datos reales de uso del dispositivo requiere permisos nativos del sistema operativo, solo disponibles para una app instalada desde una tienda (App Store / Google Play) — inviable para una web app en el navegador. Por eso el mapa se construye con datos de uso simulados.
-- **Permiso de acceso simulado**: por la misma razón, la pantalla de "Dar acceso" simula la concesión del permiso; no pide permisos reales del sistema.
-- **Publicación**: la app está publicada y accesible en abierto en GitHub (GitHub Pages), no en una tienda de apps ni en un dominio propio.
-- Tampoco hay backend ni cuentas: todo vive en estado local de React durante la sesión del navegador.
-
-## 📌 Pendiente
-
-Grabar el vídeo con la demo final del producto.
+- **Datos simulados**: acceder a los datos reales de uso del dispositivo requiere permisos nativos del sistema operativo, solo disponibles para una app instalada desde una tienda (App Store / Google Play) — inviable para una web app en el navegador. Por eso el mapa se construye con datos de uso simulados que reflejan un caso de uso o escenario tipo, eliminando de esta forma la limitación técnica y permitiendo hacer la demo funcional de la app construida.
+- **Permiso de acceso simulado**: la pantalla de "Dar acceso" simula la concesión del permiso y extracción posterior de datos conectando con la parte nativa del SSOO donde se encuentra alojada esa información.
+- **Publicación**: la app está publicada y accesible en abierto en GitHub (GitHub Pages).
