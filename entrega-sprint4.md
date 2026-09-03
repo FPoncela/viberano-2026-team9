@@ -1,32 +1,42 @@
-# Entrega Sprint 4 (final) — VibeCheck · Equipo 9
+# 🚀 Entrega Sprint 4 (final) — VibeCheck · Equipo 9
+
+![Estado](https://img.shields.io/badge/Estado-Entregado-7A9E7E?logo=checkmarx&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-live-222222?logo=githubpages&logoColor=white)
+![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?logo=anthropic&logoColor=white)
+
+> Sprint 1 se piensa · Sprint 2 se dibuja · Sprint 3 se construye · **Sprint 4 se entrega** 🎉
 
 ## 🔗 Enlaces
 
-- **Repositorio**: https://github.com/FPoncela/viberano-2026-team9
-- **Presentación** (landing con el pitch, capturas reales y comparativa frente a Screen Time): https://fponcela.github.io/viberano-2026-team9/
-- **Demo narrada** (vídeo con voz guiando el recorrido por el MVP): https://fponcela.github.io/viberano-2026-team9/demo-narrada.html
-- **App en vivo** (el MVP real, navegable desde el móvil o el navegador): https://fponcela.github.io/viberano-2026-team9/app/
+- 📦 **Repositorio**: https://github.com/FPoncela/viberano-2026-team9
+- 👉 **Presentación OFICIAL de la App** (Landing con el pitch, capturas reales y comparativa frente a otras soluciones actuales): https://fponcela.github.io/viberano-2026-team9/
+- 🎬 **Demo narrada de la App construida** (vídeo con voz guiando el recorrido por el MVP): https://fponcela.github.io/viberano-2026-team9/demo-narrada.html
+- 📲 **App en vivo** (La App REAL, navegable desde el móvil o el navegador): https://fponcela.github.io/viberano-2026-team9/app/
 
 ## 🎯 Qué se ha hecho en este sprint
 
 Punto de partida: el MVP funcional del Sprint 3 (permiso → Mi mapa → detalle → comparativa, con datos simulados). Este sprint fue de pulido y entrega, no de nueva funcionalidad de producto:
 
-- **Presentación propia** (`demo/index.html`, antes `presentacion.html`) publicada como landing principal del repositorio en GitHub Pages, con el pitch del producto, mosaico de capturas reales de la app y una comparativa directa frente a Screen Time y alternativas existentes.
-- **Reordenación de las demos**: la presentación pasa a ser la portada (`/`); el vídeo narrado del Sprint 3 se conserva en `/demo-narrada.html`.
-- **Marco de dispositivo real**: la app se ve siempre como un móvil (notch, barra de estado con hora/señal/wifi/batería reales, home indicator) se abra donde se abra y en cualquier tamaño de ventana, sin que el bisel se corte contra el borde.
-- **Menú inferior fijo**: la barra de pestañas (Mapa / Comparativa) deja de ser un overlay que tapaba la última fila de contenido; ahora cada pantalla tiene su propio scroll y el menú queda siempre fuera de él.
-- **Iconos de marca reales** por app (Instagram, TikTok, WhatsApp, YouTube, Spotify) y tooltips interactivos en las gráficas de franjas horarias.
-- **Marca "VibeCheck" visible dentro de la app**, en la propia interfaz de cada pantalla, para identificar en todo momento que se está dentro de la aplicación (no en la barra de estado simulada del sistema).
-- **Pantalla de permiso de acceso** revisada: los botones quedan arriba sin necesidad de hacer scroll dentro del marco del móvil, con más aire respecto al texto. Al declinar el permiso aparece la opción **"Salir de la app"**, que cierra la pestaña (si la abrió el icono de la presentación) o, si el navegador lo bloquea, lleva de vuelta a la última diapositiva de la presentación — cerrando el círculo de la demo.
-- **Fondo gris claro en los gráficos de barras** (Mi mapa y detalle por app) para diferenciarlos del blanco de las tarjetas.
-- **README.md reescrito por completo**, orientado a esta entrega: qué es el producto, qué hace hoy, los cuatro sprints y qué se hizo en cada uno, stack técnico y cómo correr el proyecto en local.
+- 🎬 **Presentación propia** (`demo/index.html`, antes `presentacion.html`) publicada como landing principal del repositorio en GitHub Pages, con el pitch del producto, mosaico de capturas reales de la app y una comparativa directa frente a Screen Time y alternativas existentes.
+- 🔀 **Reordenación de las demos**: la presentación pasa a ser la portada (`/`); el vídeo narrado del Sprint 3 se conserva en `/demo-narrada.html`.
+- 📱 **Marco de dispositivo real**: la app se ve siempre como un móvil (notch, barra de estado con hora/señal/wifi/batería reales, home indicator) se abra donde se abra y en cualquier tamaño de ventana, sin que el bisel se corte contra el borde.
+- 📌 **Menú inferior fijo**: la barra de pestañas (Mapa / Comparativa) deja de ser un overlay que tapaba la última fila de contenido; ahora cada pantalla tiene su propio scroll y el menú queda siempre fuera de él.
+- 🎨 **Iconos de marca reales** por app (Instagram, TikTok, WhatsApp, YouTube, Spotify) y tooltips interactivos en las gráficas de franjas horarias.
+- 🏷️ **Marca "VibeCheck" visible dentro de la app**, en la propia interfaz de cada pantalla, para identificar en todo momento que se está dentro de la aplicación (no en la barra de estado simulada del sistema).
+- 🔐 **Pantalla de permiso de acceso** revisada: los botones quedan arriba sin necesidad de hacer scroll dentro del marco del móvil, con más aire respecto al texto. Al declinar el permiso aparece la opción **"Salir de la app"**, que cierra la pestaña (si la abrió el icono de la presentación) o, si el navegador lo bloquea, lleva de vuelta a la última diapositiva de la presentación — cerrando el círculo de la demo.
+- 🩶 **Fondo gris claro en los gráficos de barras** (Mi mapa y detalle por app) para diferenciarlos del blanco de las tarjetas.
+- 📝 **README.md reescrito por completo**, orientado a esta entrega: qué es el producto, qué hace hoy, los cuatro sprints y qué se hizo en cada uno, stack tcnológico y cómo correr el proyecto en local.
 
 ## ⭐ Estado del producto
 
-Las 4 pantallas del MVP (permiso, Mi mapa, detalle por app, comparativa semanal) funcionan de principio a fin, con datos simulados, publicadas y navegables en vivo. Ver [`README.md`](README.md) para el detalle completo del producto y [`design/notas-sprint3-claude-code.md`](design/notas-sprint3-claude-code.md) para el registro de cómo se construyó con Claude Code en el Sprint 3.
+Las 4 pantallas del MVP (🔐 Conceder permisos, 🗺️ Mi mapa, 🔍 Detalle por app, 📊 Comparativa semanal) funcionan de principio a fin, con datos, publicadas y navegables en vivo. Ver [`README.md`](README.md) para el detalle completo del producto y [`design/notas-sprint3-claude-code.md`](design/notas-sprint3-claude-code.md) para el registro de cómo se construyó con Claude Code en el Sprint 3.
 
 ## ⚠️ Limitaciones técnicas encontradas
 
-- **Datos simulados**: acceder a los datos reales de uso del dispositivo requiere permisos nativos del sistema operativo, solo disponibles para una app instalada desde una tienda (App Store / Google Play) — inviable para una web app en el navegador. Por eso el mapa se construye con datos de uso simulados que reflejan un caso de uso o escenario tipo, eliminando de esta forma la limitación técnica y permitiendo hacer la demo funcional de la app construida.
-- **Permiso de acceso simulado**: la pantalla de "Dar acceso" simula la concesión del permiso y extracción posterior de datos conectando con la parte nativa del SSOO donde se encuentra alojada esa información.
-- **Publicación**: la app está publicada y accesible en abierto en GitHub (GitHub Pages).
+- 🎭 **Datos simulados**: Acceder a los datos reales de uso del dispositivo requiere permisos nativos del sistema operativo, solo disponibles para una app instalada desde una tienda (App Store / Google Play) — inviable para una web app en el navegador, no es el objetivo de esta aventura. Por eso el mapa se construye con datos de uso simulados que reflejan un caso de uso o escenario tipo, eliminando de esta forma la limitación técnica y permitiendo hacer la demo funcional de la app construida.
+- 🔓 **Permiso de acceso simulado**: La pantalla de "Dar acceso" simula la concesión del permiso y extracción posterior de datos conectando con la parte nativa del SSOO donde se encuentra alojada esa información.
+- 🌐 **Publicación**: La app está publicada y accesible en abierto en GitHub (GitHub Pages) en el siguiente enlace https://fponcela.github.io/viberano-2026-team9/app/.
+
+---
+
+<sub>🌊 VibeCheck — Descubre qué te engancha, no solo cuánto tiempo pierdes.</sub>
