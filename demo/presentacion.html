@@ -790,6 +790,54 @@
     font-size: 10.5px;
     color: var(--ink-dim);
   }
+
+  /* ---------- HERO COLLAGE ---------- */
+
+  .collage {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1 / 1.02;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .collage .shot {
+    position: absolute;
+    width: 44%;
+    border-radius: 20px;
+    border: 5px solid #fdfbf8;
+    box-shadow: 0 24px 50px -16px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,0,0,0.35);
+    background: #fdfbf8;
+  }
+  .shot-1 { width: 40%; top: 0%;   left: 4%;   transform: rotate(-9deg);  z-index: 1; }
+  .shot-2 { width: 38%; top: 4%;   right: 2%;  transform: rotate(7deg);   z-index: 2; }
+  .shot-3 { width: 42%; bottom: 4%; left: -2%; transform: rotate(6deg);   z-index: 3; }
+  .shot-4 { width: 40%; bottom: 0%; right: 8%; transform: rotate(-5deg);  z-index: 4; }
+  .shot-5 { width: 50%; top: 24%;  left: 27%;  transform: rotate(-2deg);  z-index: 5;
+    border-width: 6px;
+    box-shadow: 0 30px 64px -14px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,0,0,0.4), 0 0 0 3px rgba(240,137,90,0.4);
+  }
+  .collage-tag {
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    z-index: 6;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: linear-gradient(100deg, var(--accent), var(--gold));
+    padding: 7px 16px;
+    border-radius: 999px;
+    box-shadow: 0 12px 24px -8px rgba(240,137,90,0.55);
+    white-space: nowrap;
+  }
+  @media (max-width: 860px) {
+    .collage { max-width: 380px; margin-top: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -809,13 +857,13 @@
       </div>
       <div class="chart-stage">
         <div class="chart-glow"></div>
-        <div class="chart-card">
-          <div class="chart-head">
-            <span class="chart-eyebrow">Vista previa · Mi mapa</span>
-            <span class="chart-peak">22h<small>pico del día</small></span>
-          </div>
-          <div class="chart-bars" id="dayChart"></div>
-          <div class="chart-axis"><span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>24h</span></div>
+        <div class="collage">
+          <img class="shot shot-1" src="screenshots/permiso.png" alt="Pantalla de permiso de acceso a datos de VibeCheck" />
+          <img class="shot shot-2" src="screenshots/filtros.png" alt="Filtro por categoría en VibeCheck" />
+          <img class="shot shot-3" src="screenshots/comparativa.png" alt="Comparativa semanal de VibeCheck" />
+          <img class="shot shot-4" src="screenshots/detalle-instagram.png" alt="Ficha de Instagram en VibeCheck" />
+          <img class="shot shot-5" src="screenshots/mi-mapa.png" alt="Mi mapa, la pantalla principal de VibeCheck" />
+          <span class="collage-tag">Capturas reales · app en vivo</span>
         </div>
       </div>
     </div>
