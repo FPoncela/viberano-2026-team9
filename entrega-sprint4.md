@@ -10,7 +10,6 @@
 
 - 📦 **Repositorio**: https://github.com/FPoncela/viberano-2026-team9
 - 👉 **Presentación OFICIAL de la App** (Landing con el pitch, capturas reales y comparativa frente a otras soluciones actuales): https://fponcela.github.io/viberano-2026-team9/
-- 🎬 **Demo narrada de la App construida** (vídeo con voz guiando el recorrido por el MVP): https://fponcela.github.io/viberano-2026-team9/demo-narrada.html
 - 📲 **App en vivo** (La App REAL, navegable desde el móvil o el navegador): https://fponcela.github.io/viberano-2026-team9/app/
 
 ## 🎯 Qué se ha hecho en este sprint
@@ -29,7 +28,7 @@ Punto de partida: el MVP funcional del Sprint 3 (permiso → Mi mapa → detalle
 
 ## ⭐ Estado del producto
 
-Las 4 pantallas del MVP (🔐 Conceder permisos, 🗺️ Mi mapa, 🔍 Detalle por app, 📊 Comparativa semanal) funcionan de principio a fin, con datos, publicadas y navegables en vivo. Ver [`README.md`](README.md) para el detalle completo del producto y [`design/notas-sprint3-claude-code.md`](design/notas-sprint3-claude-code.md) para el registro de cómo se construyó con Claude Code en el Sprint 3.
+Las 4 pantallas del MVP (🔐 Conceder permisos, 🗺️ Mi mapa, 🔍 Detalle por app, 📊 Comparativa semanal) funcionan de principio a fin, con datos, publicadas y navegables en vivo.
 
 ## ⚠️ Limitaciones técnicas encontradas
 

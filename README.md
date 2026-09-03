@@ -11,7 +11,6 @@
 VibeCheck es una app de bienestar digital para adolescentes de 13 a 18 años. En vez de bloquear el móvil o poner límites impuestos desde fuera —lo que ya existe hoy (Screen Time, apps de bloqueo, control parental) y que se ignora, se desinstala o genera guerra en casa—, VibeCheck le da al propio adolescente un espejo de su comportamiento: un mapa de qué apps usa más, en qué momentos del día cae más, y cómo cambia su uso semana a semana. Sin juicio, sin sermón, sin compartirlo con nadie más.
 
 👉 **[Ver la presentación](https://fponcela.github.io/viberano-2026-team9/)** — landing con capturas reales de la app y el pitch completo del producto.
-🎬 **[Ver la demo narrada](https://fponcela.github.io/viberano-2026-team9/demo-narrada.html)** — vídeo con voz guiando todo el recorrido por el MVP.
 📲 **[Probar la app en vivo](https://fponcela.github.io/viberano-2026-team9/app/)** — el MVP real, funcionando en el navegador con datos simulados.
 
 ---
