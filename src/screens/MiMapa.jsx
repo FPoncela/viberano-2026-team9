@@ -37,7 +37,7 @@ function MiMapa({ onSeleccionarApp }) {
 
   if (mapa.diasConDatos < 3) {
     return (
-      <div className="min-h-svh flex flex-col p-md pb-24 gap-md">
+      <div className="min-h-full flex flex-col p-md pb-lg gap-md">
         <h1 className="text-h1">Mi mapa</h1>
         <Card className="mt-lg">
           <p className="text-h3 mb-xs">Todavía es pronto</p>
@@ -64,7 +64,7 @@ function MiMapa({ onSeleccionarApp }) {
   }
 
   return (
-    <div className="min-h-svh flex flex-col p-md pb-24 gap-lg">
+    <div className="min-h-full flex flex-col p-md pb-lg gap-lg">
       <div>
         <h1 className="text-h1">Mi mapa</h1>
         <p className="text-body text-text-secondary">Últimos 7 días</p>

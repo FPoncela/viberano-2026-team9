@@ -25,7 +25,7 @@ function BarraHoraria({ porHora }) {
 
   return (
     <div>
-      <div className="h-40 flex items-end gap-[3px]">
+      <div className="bg-bg rounded-card px-sm pt-md pb-xs -mx-xs h-[180px] flex items-end gap-[3px]">
         {porHora.map(({ hora, minutosTotales }) => {
           const alturaPct = maxMinutos === 0 ? 4 : Math.max(6, (minutosTotales / maxMinutos) * 100)
           const activa = horaActiva === hora

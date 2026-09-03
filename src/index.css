@@ -54,8 +54,12 @@
 
 body {
   margin: 0;
-  /* Fondo que rodea el marco de movil cuando la ventana es mas ancha que
-     un telefono (escritorio, ventana emergente sin redimensionar, etc). */
+  /* Fondo que rodea el marco de movil cuando la ventana es mas ancha (o mas
+     alta) que un telefono (escritorio, ventana emergente sin redimensionar,
+     etc). El padding deja sitio para que el bisel del marco no se corte
+     contra el borde de la ventana. */
+  padding: 10px;
+  box-sizing: border-box;
   background-color: #d9d2c6;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
@@ -70,52 +74,67 @@ body {
 #app {
   position: relative;
   overflow: hidden;
-  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 20px);
   max-width: 430px;
   margin: 0 auto;
   background-color: var(--color-bg);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.35);
 }
 
-/* ---------- MARCO DE DISPOSITIVO ---------- */
-/* Envuelve #root en un cuerpo de movil (bordes redondeados, bisel oscuro,
-   notch y home indicator), con scroll propio de la "pantalla" en vez de la
-   pagina entera. Activado en index.html con la clase marco-dispositivo. */
-.marco-dispositivo #root,
-.marco-dispositivo #app {
+/* La pantalla activa (Mi mapa, Comparativa, etc.) es lo unico que hace
+   scroll — BarraEstado arriba y TabBar abajo quedan fijos fuera de este
+   contenedor, así el menu inferior nunca tapa la ultima fila de contenido. */
+.pantalla-scroll {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100svh;
-  border-radius: 44px;
   scrollbar-width: none;
-  box-shadow:
-    0 0 0 10px #17130f,
-    0 0 0 11px rgba(0, 0, 0, 0.45),
-    0 40px 90px -20px rgba(0, 0, 0, 0.55);
 }
-.marco-dispositivo #root::-webkit-scrollbar,
-.marco-dispositivo #app::-webkit-scrollbar {
+.pantalla-scroll::-webkit-scrollbar {
   display: none;
 }
-.marco-dispositivo body::before,
-.marco-dispositivo body::after {
+
+/* ---------- MARCO DE DISPOSITIVO ---------- */
+/* Envuelve #root en un cuerpo de movil (bordes redondeados, bisel oscuro,
+   notch y home indicator). Activado en index.html con la clase
+   marco-dispositivo. Bisel y esquinas mas compactos, y anclados a #root (no
+   al viewport) para que quepan sin cortarse en ventanas pequeñas. */
+.marco-dispositivo #root,
+.marco-dispositivo #app {
+  border-radius: 34px;
+  box-shadow:
+    0 0 0 7px #17130f,
+    0 0 0 8px rgba(0, 0, 0, 0.45),
+    0 30px 70px -20px rgba(0, 0, 0, 0.55);
+}
+.marco-dispositivo #root::before,
+.marco-dispositivo #app::before {
   content: '';
-  position: fixed;
+  position: absolute;
+  top: 4px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
   pointer-events: none;
   background: #17130f;
-}
-.marco-dispositivo body::before {
-  top: 4px;
-  width: 96px;
-  height: 15px;
+  width: 88px;
+  height: 13px;
   border-radius: 999px;
 }
-.marco-dispositivo body::after {
+.marco-dispositivo #root::after,
+.marco-dispositivo #app::after {
+  content: '';
+  position: absolute;
   bottom: 6px;
-  width: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+  background: #17130f;
+  width: 92px;
   height: 4px;
   border-radius: 999px;
   opacity: 0.9;

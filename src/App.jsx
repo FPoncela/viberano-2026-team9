@@ -32,24 +32,25 @@ function App() {
     setScreen('detalle')
   }
 
-  let contenido
+  let pantalla
+  let mostrarTabBar = false
   if (screenAMostrar === 'permiso') {
-    contenido = <PermisoDatos onConceder={concederPermiso} />
+    pantalla = <PermisoDatos onConceder={concederPermiso} />
   } else if (screenAMostrar === 'detalle') {
-    contenido = <DetalleItem app={appSeleccionada} onVolver={() => setScreen('mapa')} />
+    pantalla = <DetalleItem app={appSeleccionada} onVolver={() => setScreen('mapa')} />
   } else {
-    contenido = (
-      <>
-        {screenAMostrar === 'comparativa' ? <Comparativa /> : <MiMapa onSeleccionarApp={irADetalle} />}
-        <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />
-      </>
-    )
+    mostrarTabBar = true
+    pantalla =
+      screenAMostrar === 'comparativa' ? <Comparativa /> : <MiMapa onSeleccionarApp={irADetalle} />
   }
 
   return (
     <>
       <BarraEstado />
-      {contenido}
+      <div key={screenAMostrar} className="pantalla-scroll">
+        {pantalla}
+      </div>
+      {mostrarTabBar && <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />}
     </>
   )
 }

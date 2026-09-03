@@ -67,7 +67,7 @@ function Comparativa() {
 
   if (!hayHistoricoSuficiente) {
     return (
-      <div className="min-h-svh flex flex-col p-md pb-24 gap-md">
+      <div className="min-h-full flex flex-col p-md pb-lg gap-md">
         <h1 className="text-h1">Comparativa</h1>
         <Card className="mt-lg">
           <p className="text-h3 mb-xs">Todavía no hay suficiente histórico</p>
@@ -83,7 +83,7 @@ function Comparativa() {
   const maxMinutos = Math.max(...apps.map((f) => Math.max(f.minutosEstaSemana, f.minutosSemanaAnterior)))
 
   return (
-    <div className="min-h-svh flex flex-col p-md pb-24 gap-md">
+    <div className="min-h-full flex flex-col p-md pb-lg gap-md">
       <div>
         <h1 className="text-h1">Comparativa</h1>
         <p className="text-body text-text-secondary">Esta semana vs. la anterior</p>
