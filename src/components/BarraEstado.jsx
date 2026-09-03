@@ -19,7 +19,7 @@ function BarraEstado() {
 
   return (
     <div
-      className="flex items-center justify-between px-md pt-sm text-caption font-semibold text-text-primary"
+      className="sticky top-0 z-50 flex items-center justify-between px-md pt-sm pb-xs bg-[var(--color-bg)] text-caption font-semibold text-text-primary"
       aria-hidden="true"
     >
       <span>{hora}</span>
