@@ -570,6 +570,7 @@
     background: linear-gradient(100deg, #8f2a1e, var(--bad));
     letter-spacing: 0.04em;
     border-top-left-radius: 18px;
+    margin-right: 10px;
   }
   .compare-head .vc {
     color: #241209;
@@ -1155,7 +1156,18 @@
     }
     fillDayChart('dayChart');
 
-    setActive(0);
+    // Enlace directo a una diapositiva (p. ej. "../#s3" desde la app, al
+    // salir): la abre de golpe, sin animar el scroll desde la primera.
+    var idInicial = window.location.hash.replace('#', '');
+    var indiceInicial = slides.findIndex(function (s) { return s.id === idInicial; });
+    if (indiceInicial === -1) indiceInicial = 0;
+    if (indiceInicial !== 0) {
+      var comportamientoPrevio = deck.style.scrollBehavior;
+      deck.style.scrollBehavior = 'auto';
+      slides[indiceInicial].scrollIntoView({ inline: 'start', block: 'nearest' });
+      deck.style.scrollBehavior = comportamientoPrevio;
+    }
+    setActive(indiceInicial);
   })();
 </script>
 </body>

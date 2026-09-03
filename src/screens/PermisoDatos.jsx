@@ -30,8 +30,18 @@ function PermisoDatos({ onConceder }) {
     setTimeout(onConceder, duracion)
   }
 
+  function salirDeLaApp() {
+    // Solo cierra de verdad si esta pestaña la abrió un script (p. ej. el
+    // botón de la presentación); si no, el navegador lo ignora y volvemos a
+    // la presentación como alternativa.
+    window.close()
+    setTimeout(() => {
+      window.location.href = '../#s3'
+    }, 150)
+  }
+
   return (
-    <div className="relative min-h-full flex flex-col px-md pt-lg pb-lg gap-md text-center">
+    <div className="relative min-h-full flex flex-col px-md pt-lg pb-lg gap-lg text-center">
       {duracionCarga !== null && <Cargando mensaje="Recopilando datos…" duracionMs={duracionCarga} />}
 
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
@@ -61,7 +71,7 @@ function PermisoDatos({ onConceder }) {
         </Card>
       </div>
 
-      <div className="flex flex-col gap-sm">
+      <div className="flex flex-col gap-sm mt-sm">
         {declinado && (
           <Card className="text-left">
             <p className="text-body text-text-secondary">
@@ -81,6 +91,15 @@ function PermisoDatos({ onConceder }) {
             className="text-body text-text-secondary py-sm disabled:opacity-0"
           >
             Ahora no
+          </button>
+        )}
+        {declinado && (
+          <button
+            type="button"
+            onClick={salirDeLaApp}
+            className="text-body text-text-secondary py-sm"
+          >
+            Salir de la app
           </button>
         )}
       </div>
