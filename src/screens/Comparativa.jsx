@@ -1,4 +1,5 @@
 import Card from '../components/Card'
+import IconoApp from '../components/IconosApp'
 import { infoDeApp } from '../data/apps'
 import { formatDuracion } from '../data/formato'
 import { datasetUsoNormal } from '../data/fixtures'
@@ -25,9 +26,9 @@ function FilaComparativa({ fila, maxMinutos }) {
       <span
         aria-hidden="true"
         style={{ backgroundColor: info.bg, color: info.color }}
-        className="w-11 h-11 rounded-xl flex items-center justify-center font-bold shrink-0"
+        className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
       >
-        {info.abbr}
+        <IconoApp app={fila.app} />
       </span>
       <div className="flex-1 min-w-0">
         <div className="flex justify-between items-baseline gap-sm">

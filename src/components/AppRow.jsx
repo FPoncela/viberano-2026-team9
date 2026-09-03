@@ -1,5 +1,6 @@
 import { infoDeApp } from '../data/apps'
 import { formatDuracion } from '../data/formato'
+import IconoApp from './IconosApp'
 
 function AppRow({ app, minutos, onClick }) {
   const info = infoDeApp(app)
@@ -8,14 +9,14 @@ function AppRow({ app, minutos, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="w-full flex items-center gap-md rounded-card bg-surface p-md shadow-[0_2px_12px_rgba(43,39,48,0.06)] text-left"
+      className="w-full flex items-center gap-md rounded-card bg-surface p-md shadow-[0_2px_12px_rgba(43,39,48,0.06)] text-left transition-all duration-150 hover:shadow-[0_6px_20px_rgba(43,39,48,0.14)] hover:-translate-y-0.5 hover:bg-[var(--color-primary-soft)] active:translate-y-0 active:scale-[0.99]"
     >
       <span
         aria-hidden="true"
         style={{ backgroundColor: info.bg, color: info.color }}
-        className="w-11 h-11 rounded-2xl flex items-center justify-center font-semibold shrink-0"
+        className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
       >
-        {info.abbr}
+        <IconoApp app={app} />
       </span>
       <span className="flex-1">
         <p className="text-h3">{app}</p>

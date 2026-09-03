@@ -76,3 +76,47 @@ body {
   background-color: var(--color-bg);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.35);
 }
+
+/* ---------- MARCO DE DISPOSITIVO ---------- */
+/* Envuelve #root en un cuerpo de movil (bordes redondeados, bisel oscuro,
+   notch y home indicator), con scroll propio de la "pantalla" en vez de la
+   pagina entera. Activado en index.html con la clase marco-dispositivo. */
+.marco-dispositivo #root,
+.marco-dispositivo #app {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100svh;
+  border-radius: 44px;
+  scrollbar-width: none;
+  box-shadow:
+    0 0 0 10px #17130f,
+    0 0 0 11px rgba(0, 0, 0, 0.45),
+    0 40px 90px -20px rgba(0, 0, 0, 0.55);
+}
+.marco-dispositivo #root::-webkit-scrollbar,
+.marco-dispositivo #app::-webkit-scrollbar {
+  display: none;
+}
+.marco-dispositivo body::before,
+.marco-dispositivo body::after {
+  content: '';
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+  background: #17130f;
+}
+.marco-dispositivo body::before {
+  top: 4px;
+  width: 96px;
+  height: 15px;
+  border-radius: 999px;
+}
+.marco-dispositivo body::after {
+  bottom: 6px;
+  width: 100px;
+  height: 4px;
+  border-radius: 999px;
+  opacity: 0.9;
+}

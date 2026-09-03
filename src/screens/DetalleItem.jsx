@@ -1,5 +1,6 @@
 import Card from '../components/Card'
 import BarraHoraria from '../components/BarraHoraria'
+import IconoApp from '../components/IconosApp'
 import { infoDeApp } from '../data/apps'
 import { formatDuracion } from '../data/formato'
 import { datasetUsoNormal } from '../data/fixtures'
@@ -43,9 +44,9 @@ function DetalleItem({ app, onVolver }) {
         <span
           aria-hidden="true"
           style={{ backgroundColor: info.bg, color: info.color }}
-          className="w-11 h-11 rounded-xl flex items-center justify-center font-bold shrink-0"
+          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
         >
-          {info.abbr}
+          <IconoApp app={app} className="w-6 h-6" />
         </span>
         <div>
           <p className="text-h1">{app}</p>
