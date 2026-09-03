@@ -25,7 +25,7 @@ Punto de partida: el MVP funcional del Sprint 3 (permiso → Mi mapa → detalle
 
 Las 4 pantallas del MVP (permiso, Mi mapa, detalle por app, comparativa semanal) funcionan de principio a fin, con datos simulados, publicadas y navegables en vivo. Ver [`README.md`](README.md) para el detalle completo del producto y [`design/notas-sprint3-claude-code.md`](design/notas-sprint3-claude-code.md) para el registro de cómo se construyó con Claude Code en el Sprint 3.
 
-## 🙏 Qué NO funciona todavía
+## ⚠️ Limitaciones técnicas encontradas
 
 Sin cambios respecto al Sprint 3: los datos son simulados (sin integración real con las APIs de uso de pantalla de iOS/Android), no hay backend ni cuentas, el permiso de acceso es una simulación, y no está publicado en tienda ni dominio propio.
 
