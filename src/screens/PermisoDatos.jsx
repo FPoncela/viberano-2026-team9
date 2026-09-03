@@ -1,7 +1,15 @@
 import { useState } from 'react'
 import Button from '../components/Button'
 import Card from '../components/Card'
+import Cargando from '../components/Cargando'
 import { IconoMapaTab } from '../components/IconosTab'
+
+const CARGA_MIN_MS = 3000
+const CARGA_MAX_MS = 5000
+
+function duracionCargaAleatoria() {
+  return CARGA_MIN_MS + Math.random() * (CARGA_MAX_MS - CARGA_MIN_MS)
+}
 
 function IconoDispositivo() {
   return (
@@ -14,6 +22,17 @@ function IconoDispositivo() {
 
 function PermisoDatos({ onConceder }) {
   const [declinado, setDeclinado] = useState(false)
+  const [duracionCarga, setDuracionCarga] = useState(null)
+
+  function darAcceso() {
+    const duracion = duracionCargaAleatoria()
+    setDuracionCarga(duracion)
+    setTimeout(onConceder, duracion)
+  }
+
+  if (duracionCarga !== null) {
+    return <Cargando mensaje="Recopilando datos…" duracionMs={duracionCarga} />
+  }
 
   return (
     <div className="min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
@@ -53,7 +72,7 @@ function PermisoDatos({ onConceder }) {
             </p>
           </Card>
         )}
-        <Button variant="primary" onClick={onConceder}>
+        <Button variant="primary" onClick={darAcceso}>
           Dar acceso
         </Button>
         {!declinado && (
