@@ -48,6 +48,11 @@ function App() {
     <>
       <BarraEstado />
       <div key={screenAMostrar} className="pantalla-scroll">
+        <div className="flex justify-start px-md pt-sm">
+          <span className="text-caption font-extrabold tracking-tight text-text-secondary">
+            Vibe<span className="text-primary">Check</span>
+          </span>
+        </div>
         {pantalla}
       </div>
       {mostrarTabBar && <TabBar tabs={TABS} activeTab={screenAMostrar} onTabChange={setScreen} />}

@@ -31,7 +31,7 @@ function PermisoDatos({ onConceder }) {
   }
 
   return (
-    <div className="relative min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
+    <div className="relative min-h-full flex flex-col px-md pt-lg pb-lg gap-md text-center">
       {duracionCarga !== null && <Cargando mensaje="Recopilando datos…" duracionMs={duracionCarga} />}
 
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
@@ -61,7 +61,7 @@ function PermisoDatos({ onConceder }) {
         </Card>
       </div>
 
-      <div className="mt-auto flex flex-col gap-sm">
+      <div className="flex flex-col gap-sm">
         {declinado && (
           <Card className="text-left">
             <p className="text-body text-text-secondary">
