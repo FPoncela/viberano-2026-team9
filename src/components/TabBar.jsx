@@ -1,6 +1,6 @@
 function TabBar({ tabs, activeTab, onTabChange }) {
   return (
-    <nav className="fixed bottom-0 inset-x-0 bg-surface border-t border-border flex">
+    <nav className="absolute bottom-0 inset-x-0 bg-surface border-t border-border flex">
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab
         const Icono = tab.icon

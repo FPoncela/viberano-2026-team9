@@ -54,14 +54,25 @@
 
 body {
   margin: 0;
-  background-color: var(--color-bg);
+  /* Fondo que rodea el marco de movil cuando la ventana es mas ancha que
+     un telefono (escritorio, ventana emergente sin redimensionar, etc). */
+  background-color: #d9d2c6;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: var(--text-body--line-height);
 }
 
+/* La app siempre se ve como un movil, la abra quien la abra y desde donde
+   la abra: en pantallas anchas queda centrada dentro de un marco fijo de
+   ancho movil en vez de estirarse a todo lo ancho de la ventana. */
 #root,
 #app {
+  position: relative;
+  overflow: hidden;
   min-height: 100svh;
+  max-width: 430px;
+  margin: 0 auto;
+  background-color: var(--color-bg);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 30px 80px -30px rgba(0, 0, 0, 0.35);
 }
