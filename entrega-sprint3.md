@@ -6,7 +6,9 @@ https://github.com/FPoncela/viberano-2026-team9 — `plan.md`, `tasks.md` y la a
 
 ## 🎬 Demo
 
-👉 **https://fponcela.github.io/viberano-2026-team9/** — landing con el vídeo narrado del recorrido completo por el MVP (permiso de acceso, Mi mapa, detalle por app, comparativa semanal y filtro por categoría), viendo la app en vivo desde el navegador. Fuente en [`demo/index.html`](demo/index.html); el vídeo también está disponible suelto en [`demo/vibecheck-demo-narrado.mp4`](demo/vibecheck-demo-narrado.mp4).
+👉 **https://fponcela.github.io/viberano-2026-team9/** — presentación de hype de VibeCheck. Fuente en [`demo/index.html`](demo/index.html) (antes `demo/presentacion.html`).
+
+👉 **https://fponcela.github.io/viberano-2026-team9/demo-narrada.html** — landing con el vídeo narrado del recorrido completo por el MVP (permiso de acceso, Mi mapa, detalle por app, comparativa semanal y filtro por categoría), viendo la app en vivo desde el navegador. Fuente en [`demo/demo-narrada.html`](demo/demo-narrada.html); el vídeo también está disponible suelto en [`demo/vibecheck-demo-narrado.mp4`](demo/vibecheck-demo-narrado.mp4).
 
 ## ⭐ Qué funciona ya
 
