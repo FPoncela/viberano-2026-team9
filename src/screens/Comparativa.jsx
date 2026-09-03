@@ -23,13 +23,7 @@ function FilaComparativa({ fila, maxMinutos }) {
 
   return (
     <Card className="flex gap-sm items-start">
-      <span
-        aria-hidden="true"
-        style={{ backgroundColor: info.bg, color: info.color }}
-        className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-      >
-        <IconoApp app={fila.app} />
-      </span>
+      <IconoApp app={fila.app} />
       <div className="flex-1 min-w-0">
         <div className="flex justify-between items-baseline gap-sm">
           <p className="text-h3">{fila.app}</p>

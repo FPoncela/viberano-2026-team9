@@ -30,12 +30,10 @@ function PermisoDatos({ onConceder }) {
     setTimeout(onConceder, duracion)
   }
 
-  if (duracionCarga !== null) {
-    return <Cargando mensaje="Recopilando datos…" duracionMs={duracionCarga} />
-  }
-
   return (
-    <div className="min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
+    <div className="relative min-h-svh flex flex-col px-md pt-xl pb-xl gap-lg text-center">
+      {duracionCarga !== null && <Cargando mensaje="Recopilando datos…" duracionMs={duracionCarga} />}
+
       <div className="mx-auto w-24 h-24 rounded-[28px] bg-primary-soft flex items-center justify-center">
         <IconoMapaTab className="w-10 h-10 text-primary" />
       </div>
@@ -72,14 +70,15 @@ function PermisoDatos({ onConceder }) {
             </p>
           </Card>
         )}
-        <Button variant="primary" onClick={darAcceso}>
+        <Button variant="primary" onClick={darAcceso} disabled={duracionCarga !== null}>
           Dar acceso
         </Button>
         {!declinado && (
           <button
             type="button"
             onClick={() => setDeclinado(true)}
-            className="text-body text-text-secondary py-sm"
+            disabled={duracionCarga !== null}
+            className="text-body text-text-secondary py-sm disabled:opacity-0"
           >
             Ahora no
           </button>

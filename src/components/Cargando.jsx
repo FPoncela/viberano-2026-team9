@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 
-// Pantalla de carga breve entre "Dar acceso" y Mi mapa — simula que la app
-// está leyendo de verdad los datos de uso del sistema, en vez de saltar
-// instantáneamente a un mapa que ya estaba preparado. La duración la decide
-// quien la muestra (aleatoria, para que no se sienta siempre igual), y la
-// barra de progreso se anima a ese mismo ritmo.
+// Capa de carga breve entre "Dar acceso" y Mi mapa — simula que la app está
+// leyendo de verdad los datos de uso del sistema, en vez de saltar
+// instantáneamente a un mapa que ya estaba preparado. Se superpone a la
+// pantalla anterior con un velo translúcido (sigue asomando debajo) en vez
+// de taparla del todo, para que no se sienta como una pantalla en blanco.
+// La duración la decide quien la muestra (aleatoria, para que no se sienta
+// siempre igual), y la barra de progreso se anima a ese mismo ritmo.
 function Cargando({ mensaje = 'Recopilando datos…', duracionMs = 4000 }) {
   const [progreso, setProgreso] = useState(6)
 
@@ -14,7 +16,11 @@ function Cargando({ mensaje = 'Recopilando datos…', duracionMs = 4000 }) {
   }, [])
 
   return (
-    <div className="min-h-svh flex flex-col items-center justify-center gap-md px-md text-center">
+    <div
+      className="absolute inset-0 z-40 flex flex-col items-center justify-center gap-md px-md text-center bg-[var(--color-bg)]/70 backdrop-blur-sm"
+      role="status"
+      aria-live="polite"
+    >
       <span
         className="w-10 h-10 rounded-full border-4 border-primary-soft border-t-primary animate-spin"
         aria-hidden="true"

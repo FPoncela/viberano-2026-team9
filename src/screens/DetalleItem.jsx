@@ -41,13 +41,7 @@ function DetalleItem({ app, onVolver }) {
       </button>
 
       <div className="flex items-center gap-md my-xs">
-        <span
-          aria-hidden="true"
-          style={{ backgroundColor: info.bg, color: info.color }}
-          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-        >
-          <IconoApp app={app} className="w-6 h-6" />
-        </span>
+        <IconoApp app={app} className="w-14 h-14" />
         <div>
           <p className="text-h1">{app}</p>
           <p className="text-caption text-text-secondary">{info.categoria}</p>

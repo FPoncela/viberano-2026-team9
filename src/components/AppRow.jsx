@@ -11,13 +11,7 @@ function AppRow({ app, minutos, onClick }) {
       onClick={onClick}
       className="w-full flex items-center gap-md rounded-card bg-surface p-md shadow-[0_2px_12px_rgba(43,39,48,0.06)] text-left transition-all duration-150 hover:shadow-[0_6px_20px_rgba(43,39,48,0.14)] hover:-translate-y-0.5 hover:bg-[var(--color-primary-soft)] active:translate-y-0 active:scale-[0.99]"
     >
-      <span
-        aria-hidden="true"
-        style={{ backgroundColor: info.bg, color: info.color }}
-        className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
-      >
-        <IconoApp app={app} />
-      </span>
+      <IconoApp app={app} />
       <span className="flex-1">
         <p className="text-h3">{app}</p>
         <p className="text-caption text-text-secondary">{info.categoria}</p>
