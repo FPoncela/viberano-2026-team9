@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VibeCheck</title>
+<style>
+  :root {
+    --bg: #0d0a08;
+    --bg-soft: #161110;
+    --surface: #1d1614;
+    --surface-2: #241b18;
+    --line: #382b25;
+    --line-soft: #2a201c;
+    --ink: #f6efe4;
+    --ink-soft: #b9a99a;
+    --ink-dim: #83766a;
+    --accent: #f0895a;
+    --accent-soft: #7a4530;
+    --accent-glow: rgba(240, 137, 90, 0.45);
+    --violet: #c6a6f0;
+    --sage: #9bd19c;
+    --gold: #f2c265;
+    --bad: #c9584a;
+    --bad-glow: rgba(201, 88, 74, 0.28);
+
+    --font-display: -apple-system, "SF Pro Rounded", ui-rounded, "Segoe UI", Roboto, sans-serif;
+    --font-body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- DECK SHELL ---------- */
+
+  .deck {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .deck::-webkit-scrollbar { display: none; }
+
+  .slide {
+    flex: 0 0 100vw;
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(28px, 6vw, 88px) clamp(24px, 8vw, 120px);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(640px circle at 8% -12%, rgba(240, 137, 90, 0.16), transparent 62%),
+      radial-gradient(560px circle at 104% 108%, rgba(198, 166, 240, 0.12), transparent 60%);
+  }
+  .slide:nth-of-type(even)::before {
+    background:
+      radial-gradient(640px circle at 100% -14%, rgba(242, 194, 101, 0.14), transparent 60%),
+      radial-gradient(560px circle at -6% 108%, rgba(240, 137, 90, 0.14), transparent 60%);
+  }
+
+  .slide-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .kicker-row {
+    position: absolute;
+    top: clamp(18px, 3vw, 34px);
+    left: clamp(24px, 8vw, 120px);
+    right: clamp(24px, 8vw, 120px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    z-index: 2;
+  }
+
+  .kicker-row .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(18px, 2vw, 22px);
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ink-soft);
+  }
+  .kicker-row .wordmark span { color: var(--accent); }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+
+  .slide h1 {
+    font-size: clamp(34px, 5.6vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .slide h1 em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--accent), var(--gold) 60%, var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .slide h2 {
+    font-size: clamp(26px, 3.8vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+  }
+
+  .lede {
+    font-size: clamp(15.5px, 1.7vw, 19px);
+    color: var(--ink-soft);
+    max-width: 56ch;
+    line-height: 1.65;
+    margin-top: 16px;
+  }
+  .lede strong { color: var(--accent); font-weight: 700; }
+
+  /* ---------- HERO BARS ---------- */
+
+  .hero-bars {
+    position: absolute;
+    inset: -10% -5% auto -5%;
+    height: 440px;
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(3px, 0.6vw, 8px);
+    opacity: 0.14;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-bars i {
+    flex: 1;
+    height: 100%;
+    background: linear-gradient(to top, var(--accent), transparent);
+    border-radius: 3px 3px 0 0;
+    animation: bar-breathe 4.5s ease-in-out infinite;
+  }
+  @keyframes bar-breathe {
+    0%, 100% { transform: scaleY(var(--h, 0.4)); }
+    50% { transform: scaleY(calc(var(--h, 0.4) * 1.18)); }
+  }
+
+  /* ---------- HERO SLIDE ---------- */
+
+  .slide-hero .slide-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.75fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .slide-hero .slide-inner { grid-template-columns: 1fr; }
+    .phone-stage { order: -1; }
+  }
+
+
+  .phone-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-glow {
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    filter: blur(8px);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow-pulse 5s ease-in-out infinite;
+    z-index: 0;
+  }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.07); }
+  }
+  .phone {
+    position: relative;
+    z-index: 1;
+    width: min(320px, 68vw);
+    background: linear-gradient(155deg, #ffffff, #e9e4dc 55%, #d3ccc0);
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow:
+      0 44px 100px -18px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(0,0,0,0.08),
+      inset 0 1.5px 0 0 rgba(255,255,255,0.9),
+      inset 0 0 0 1px rgba(0,0,0,0.06);
+  }
+  .phone-notch {
+    position: absolute;
+    top: 24px; left: 50%;
+    transform: translateX(-50%);
+    width: 84px; height: 18px;
+    background: #17130f;
+    border-radius: 10px;
+    z-index: 3;
+  }
+  .phone-screen {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(175deg, #fdfbf8, #f2ede6 55%, #ece4da);
+    aspect-ratio: 9 / 16;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- SIMULATED HOME SCREEN ---------- */
+
+  .status-bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #241f1a;
+  }
+  .status-icons { display: flex; align-items: center; gap: 5px; color: #241f1a; }
+  .status-icons svg { width: 14px; height: 14px; }
+
+  .app-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 10px;
+    padding: 22px 16px 10px;
+    align-content: start;
+  }
+
+  .app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+    cursor: default;
+    text-decoration: none;
+  }
+  .app-icon .tile {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px -2px rgba(40, 30, 20, 0.28);
+  }
+  .app-icon .tile svg { width: 48%; height: 48%; position: relative; z-index: 1; }
+  .app-icon span {
+    font-size: 9px;
+    font-weight: 600;
+    color: #4a4136;
+    letter-spacing: 0.01em;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .app-grid .app-icon:nth-child(1) .tile { background: linear-gradient(155deg, #5fc86e, #35a24a); }
+  .app-grid .app-icon:nth-child(2) .tile { background: linear-gradient(155deg, #f2a35c, #d4791f); }
+  .app-grid .app-icon:nth-child(3) .tile { background: linear-gradient(155deg, #6f6ff2, #4640c9); }
+  .app-grid .app-icon:nth-child(4) .tile { background: linear-gradient(155deg, #ff9f4d, #f2762c); }
+  .app-grid .app-icon:nth-child(5) .tile { background: linear-gradient(155deg, #4dc4d9, #1f9bb3); }
+  .app-grid .app-icon:nth-child(6) .tile { background: linear-gradient(155deg, #9b9b9b, #6b6b6b); }
+  .app-grid .app-icon:nth-child(7) .tile { background: linear-gradient(155deg, #5fb8f5, #2a8ed6); }
+  .app-grid .app-icon:nth-child(8) .tile { background: linear-gradient(155deg, #4ecdb0, #1f9b7f); }
+  .app-grid .app-icon:nth-child(9) .tile { background: linear-gradient(155deg, #7fd88f, #3fae5e); }
+  .app-grid .app-icon:nth-child(10) .tile { background: linear-gradient(155deg, #ffcf4d, #f2a02c); }
+  .app-grid .app-icon:nth-child(11) .tile { background: linear-gradient(155deg, #b0b0b0, #7d7d7d); }
+
+  .app-dock {
+    flex: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 16px 8px;
+  }
+  .app-dock .app-icon {
+    position: relative;
+    z-index: 1;
+    width: calc((100% - 30px) / 4);
+  }
+
+  .tap-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    z-index: 0;
+    pointer-events: none;
+    animation: tap-ring-pulse 1s cubic-bezier(.3,.6,.3,1) infinite;
+  }
+  .tap-ring.delay { animation-delay: 0.33s; }
+  @keyframes tap-ring-pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+
+  .app-icon-star {
+    cursor: pointer;
+    position: relative;
+  }
+  .app-icon-star .tile {
+    position: relative;
+    background: linear-gradient(120deg, var(--accent), var(--gold) 55%, var(--violet));
+    color: #2a1608;
+    box-shadow: 0 8px 18px -6px rgba(240,137,90,0.5), 0 0 0 2.5px #fdfbf8;
+    animation: star-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes star-pulse {
+    0%, 100% { box-shadow: 0 8px 18px -6px rgba(240,137,90,0.5), 0 0 0 2.5px #fdfbf8; }
+    50% { box-shadow: 0 8px 24px -4px rgba(198,166,240,0.55), 0 0 0 2.5px #fdfbf8; }
+  }
+  .app-icon-star span {
+    color: var(--accent-soft);
+    font-weight: 800;
+    font-size: 9.5px;
+    margin-top: 2px;
+  }
+  .app-icon-star:hover .tile { transform: scale(1.08); }
+  .app-icon-star:focus-visible .tile { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+
+  .home-indicator {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 14px;
+  }
+  .home-indicator i {
+    width: 108px; height: 4px;
+    border-radius: 999px;
+    background: #241f1a;
+    opacity: 0.28;
+  }
+
+  /* ---------- PULL QUOTE SLIDE ---------- */
+
+  .pull-quote {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(26px, 4vw, 44px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    max-width: 15ch;
+  }
+  .pull-quote em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--accent), var(--gold) 60%, var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- FEATURE REVEAL GRID ---------- */
+
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .fcard {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 22px;
+    position: relative;
+    box-shadow: 0 12px 28px -18px rgba(0,0,0,0.6);
+  }
+  .fcard .num {
+    font-family: var(--font-mono);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .fcard .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(240,137,90,0.1);
+    border: 1px solid rgba(240,137,90,0.25);
+    border-radius: 999px;
+    padding: 3px 9px;
+    float: right;
+  }
+  .fcard h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 14px 0 8px;
+    clear: both;
+  }
+  .fcard p {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ---------- CLOSING ---------- */
+
+  .close-note {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-dim);
+  }
+  .close-note .live-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sage);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(155, 209, 156, 0.55); }
+    70% { box-shadow: 0 0 0 8px rgba(155, 209, 156, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(155, 209, 156, 0); }
+  }
+
+  /* ---------- PROBLEMA / SOLUCIÓN ---------- */
+
+  .problem-solution {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(20px, 4vw, 44px);
+    align-items: start;
+  }
+  .ps-arrow { align-self: center; }
+  .ps-col h2 { font-size: clamp(28px, 4.2vw, 44px); }
+  .ps-col .lede { font-size: clamp(17px, 2vw, 21px); }
+  .ps-solution h2 em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--accent), var(--gold) 60%, var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ps-arrow {
+    color: var(--ink-dim);
+    width: 22px; height: 22px;
+  }
+  .ps-arrow svg { width: 100%; height: 100%; }
+  @media (max-width: 760px) {
+    .problem-solution { grid-template-columns: 1fr; }
+    .ps-arrow { transform: rotate(90deg); justify-self: start; }
+  }
+
+  /* ---------- COMPARATIVA ---------- */
+
+  .compare-table {
+    margin-top: 28px;
+    border: 1px solid var(--line-soft);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--surface);
+    position: relative;
+  }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 0.85fr 1.1fr 1.25fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .compare-row > * {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+  }
+  .compare-row:not(:last-child) { border-bottom: 1px solid var(--line-soft); }
+  .compare-head {
+    background: var(--bg-soft);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .compare-head > * { padding: 15px 20px; }
+  .compare-head .rival {
+    color: var(--bad);
+    font-weight: 700;
+    margin: 8px 10px 8px 0;
+    padding: 9px 14px !important;
+    border-radius: 10px;
+    border: 1.5px solid rgba(201, 88, 74, 0.6);
+    background: rgba(201, 88, 74, 0.14);
+  }
+  .compare-head .vc {
+    color: #241209;
+    font-weight: 800;
+    font-size: 12.5px;
+    background: linear-gradient(100deg, var(--accent), var(--gold));
+    letter-spacing: 0.04em;
+  }
+  .dim {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .cell { font-size: 16px; line-height: 1.4; }
+  .icon-mark {
+    flex: none;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+  }
+  .icon-mark svg { width: 13px; height: 13px; }
+  .cell.no {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-color: rgba(201, 88, 74, 0.55);
+    text-decoration-thickness: 1.5px;
+    margin: 8px 10px 8px 0;
+    border-radius: 12px;
+    border: 1.5px solid rgba(201, 88, 74, 0.45);
+    background: rgba(201, 88, 74, 0.1);
+    box-shadow: inset 0 0 20px -10px var(--bad-glow);
+  }
+  .cell.no .icon-mark {
+    background: rgba(201, 88, 74, 0.22);
+    color: var(--bad);
+  }
+  .cell.yes {
+    color: var(--ink);
+    font-weight: 600;
+    margin: 8px 0;
+    border-radius: 12px;
+    background: linear-gradient(100deg, rgba(240,137,90,0.16), rgba(198,166,240,0.06));
+    border: 1.5px solid rgba(240, 137, 90, 0.5);
+    box-shadow: inset 0 0 24px -12px var(--accent-glow);
+  }
+  .cell.yes .icon-mark {
+    background: var(--sage);
+    color: #16281a;
+    box-shadow: 0 0 14px -2px rgba(155,209,156,0.55);
+  }
+  @media (max-width: 760px) {
+    .compare-row { grid-template-columns: 1fr; }
+    .compare-row > * { padding: 10px 18px; }
+    .compare-head { display: none; }
+    .dim { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding-bottom: 2px !important; }
+    .cell.no, .cell.yes { margin: 6px 0; }
+  }
+
+  .compare-punch {
+    margin: 22px 0 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(17px, 2vw, 21px);
+    color: var(--ink-soft);
+  }
+  .compare-punch strong { color: var(--accent); }
+
+  /* ---------- NAV CHROME ---------- */
+
+  .nav-chrome {
+    position: fixed;
+    left: 0; right: 0; bottom: clamp(16px, 3vw, 28px);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    pointer-events: none;
+  }
+  .nav-chrome > * { pointer-events: auto; }
+  .nav-counter {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .nav-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-soft);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .nav-btn svg { width: 16px; height: 16px; }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn:disabled:hover { border-color: var(--line); color: var(--ink-soft); }
+
+  .dots { display: flex; gap: 8px; }
+  .dots button {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    border: none;
+    background: var(--line);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .dots button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .dots button.active { background: var(--accent); transform: scale(1.3); }
+
+  @media (max-width: 640px) {
+    .nav-counter { display: none; }
+  }
+
+  /* ---------- HERO CHART ---------- */
+
+  .chart-stage { position: relative; }
+  @media (max-width: 860px) {
+    .chart-stage { order: -1; }
+  }
+  .chart-glow {
+    position: absolute;
+    width: 460px; height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    filter: blur(10px);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow-pulse 5s ease-in-out infinite;
+    z-index: 0;
+  }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.06); }
+  }
+
+  .chart-card {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(165deg, var(--surface-2), var(--surface) 70%);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: clamp(20px, 2.6vw, 30px) clamp(20px, 2.6vw, 30px) 18px;
+    box-shadow: 0 40px 90px -24px rgba(0,0,0,0.6);
+  }
+
+  .chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+  }
+  .chart-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .chart-peak {
+    text-align: right;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .chart-peak small {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 4px;
+  }
+
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(3px, 0.9vw, 6px);
+    height: clamp(140px, 24vw, 220px);
+  }
+  .chart-bars i {
+    flex: 1;
+    display: block;
+    height: 100%;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(to top, var(--accent-soft), rgba(122,69,48,0.25));
+    transform-origin: bottom;
+    transform: scaleY(var(--h, 0.3));
+    animation: bar-rise 0.9s cubic-bezier(.2,.8,.2,1) backwards, bar-idle 4.5s ease-in-out infinite 0.9s;
+    animation-delay: var(--d, 0s), calc(var(--d, 0s) + 0.9s);
+  }
+  .chart-bars i.peak {
+    background: linear-gradient(to top, var(--accent), var(--gold));
+    box-shadow: 0 0 22px 0 var(--accent-glow);
+  }
+  @keyframes bar-rise {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(var(--h, 0.3)); opacity: 1; }
+  }
+  @keyframes bar-idle {
+    0%, 100% { transform: scaleY(var(--h, 0.3)); }
+    50% { transform: scaleY(calc(var(--h, 0.3) * 1.08)); }
+  }
+
+  .chart-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-soft);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--ink-dim);
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <section class="slide slide-hero" id="s0">
+    <div class="hero-bars" id="heroBars"></div>
+    <div class="kicker-row">
+      <span class="wordmark">Vibe<span>Check</span></span>
+    </div>
+    <div class="slide-inner">
+      <div>
+        <p class="eyebrow">VibeCheck</p>
+        <h1>Tu móvil te cuenta<br>cosas. <em>Por fin las ves.</em></h1>
+        <p class="lede">Convierte tu propio uso del móvil en un mapa que entiendes de un vistazo. <strong>Sin compartirlo con nadie.</strong></p>
+      </div>
+      <div class="chart-stage">
+        <div class="chart-glow"></div>
+        <div class="chart-card">
+          <div class="chart-head">
+            <span class="chart-eyebrow">Vista previa · Mi mapa</span>
+            <span class="chart-peak">22h<small>pico del día</small></span>
+          </div>
+          <div class="chart-bars" id="dayChart"></div>
+          <div class="chart-axis"><span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>24h</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="s1">
+    <div class="hero-bars" id="heroBarsPS"></div>
+    <div class="kicker-row"><span class="wordmark">Vibe<span>Check</span></span></div>
+    <div class="slide-inner problem-solution">
+      <div class="ps-col">
+        <p class="eyebrow">El problema</p>
+        <h2>Sabes que usas el móvil.<br>No sabes cuánto.</h2>
+        <p class="lede">Te lo prometes cada noche: hoy menos pantalla. Y cada noche pierdes la cuenta — no de fuerza de voluntad, sino de <strong>datos delante</strong>.</p>
+      </div>
+      <div class="ps-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="ps-col ps-solution">
+        <p class="eyebrow">La solución</p>
+        <h2>Un espejo,<br>no un <em>sermón</em>.</h2>
+        <p class="lede">VibeCheck te enseña lo que ya haces — con tus propios datos, en tu propio móvil. <strong>Nada sale de ahí.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="s1b">
+    <div class="hero-bars" id="heroBarsCompare"></div>
+    <div class="kicker-row"><span class="wordmark">Vibe<span>Check</span></span></div>
+    <div class="slide-inner">
+      <p class="eyebrow">Frente a lo que ya existe</p>
+      <h2>Nada en el mercado hace esto</h2>
+      <div class="compare-table">
+        <div class="compare-row compare-head">
+          <span></span>
+          <span class="rival">Screen Time y apps habituales</span>
+          <span class="vc">VibeCheck</span>
+        </div>
+        <div class="compare-row">
+          <span class="dim">Tono</span>
+          <span class="cell no"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Límites y avisos moralizantes</span>
+          <span class="cell yes"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Te enseña el patrón, sin juzgar</span>
+        </div>
+        <div class="compare-row">
+          <span class="dim">Si faltan datos</span>
+          <span class="cell no"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Gráfica vacía o número inflado</span>
+          <span class="cell yes"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Aviso honesto de "histórico insuficiente"</span>
+        </div>
+        <div class="compare-row">
+          <span class="dim">Dónde viven tus datos</span>
+          <span class="cell no"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Cuenta y nube del fabricante</span>
+          <span class="cell yes"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Se quedan en tu móvil</span>
+        </div>
+        <div class="compare-row">
+          <span class="dim">Qué te enseña</span>
+          <span class="cell no"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Un total del día, sin contexto</span>
+          <span class="cell yes"><span class="icon-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>Franjas, tendencia semanal y filtro por categoría</span>
+        </div>
+      </div>
+      <p class="compare-punch">No es una versión más de Screen Time. <strong>Es otra categoría.</strong></p>
+    </div>
+  </section>
+
+  <section class="slide" id="s2">
+    <div class="hero-bars" id="heroBarsFeatures"></div>
+    <div class="kicker-row"><span class="wordmark">Vibe<span>Check</span></span></div>
+    <div class="slide-inner">
+      <p class="eyebrow">Lo que vas a ver</p>
+      <h2>Seis maneras de mirarte a ti mismo</h2>
+      <div class="grid-cards">
+        <div class="fcard">
+          <span class="tag">Confianza</span>
+          <p class="num">01</p>
+          <h3>Permiso claro</h3>
+          <p>Tú decides si compartes tus datos de uso. Sin letra pequeña, sin trampas.</p>
+        </div>
+        <div class="fcard">
+          <span class="tag">Estrella</span>
+          <p class="num">02</p>
+          <h3>Mi mapa</h3>
+          <p>Franjas horarias de los últimos 7 días con el pico marcado, y ranking de apps por tiempo usado.</p>
+        </div>
+        <div class="fcard">
+          <span class="tag">Detalle</span>
+          <p class="num">03</p>
+          <h3>Ficha por app</h3>
+          <p>Tiempo total semanal, sesiones, sesión más larga y primera apertura del día.</p>
+        </div>
+        <div class="fcard">
+          <span class="tag">Ritmo</span>
+          <p class="num">04</p>
+          <h3>Comparativa semanal</h3>
+          <p>Esta semana frente a la anterior, app por app, con la tendencia al alza o a la baja.</p>
+        </div>
+        <div class="fcard">
+          <span class="tag">Cuidado</span>
+          <p class="num">05</p>
+          <h3>Sin datos engañosos</h3>
+          <p>Si aún no hay histórico suficiente, te lo decimos — nunca una gráfica vacía haciéndose pasar por un dato.</p>
+        </div>
+        <div class="fcard">
+          <span class="tag">Enfoque</span>
+          <p class="num">06</p>
+          <h3>Filtro por categoría</h3>
+          <p>Acota tu mapa a mensajería, música, vídeo o redes sociales en un toque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide slide-hero" id="s3">
+    <div class="hero-bars" id="heroBarsEnd"></div>
+    <div class="kicker-row"><span class="wordmark">Vibe<span>Check</span></span></div>
+    <div class="slide-inner">
+      <div>
+        <p class="eyebrow">Lo que viene ahora</p>
+        <h1>Obsérvate.<br><em>En tu móvil. En vivo.</em></h1>
+      </div>
+      <div class="phone-stage">
+        <div class="phone-glow"></div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="status-bar">
+              <span>9:41</span>
+              <span class="status-icons">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 17h2v4H2zm4.5-3h2v7h-2zM11 11h2v10h-2zm4.5-4h2v14h-2zM20 4h2v17h-2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.5a16 16 0 0 1 20 0M5.5 12a11 11 0 0 1 13 0M9 15.5a6 6 0 0 1 6 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="18" height="10" rx="2.5"/><rect x="4.5" y="9.5" width="10" height="5" fill="currentColor" stroke="none"/><path d="M22 10v4" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+
+            <div class="app-grid">
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span>Mensajes</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="18" r="3"/><circle cx="19" cy="15" r="3"/><path d="M11 18V5l9-2v12"/></svg></span><span>Música</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="M22 8.5l-5 3.5 5 3.5z"/></svg></span><span>Vídeo</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><span>Calendario</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 1 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></span><span>Redes</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3.3-6.5"/><path d="M20 4v5h-5"/></svg></span><span>Ajustes</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6.5-14 6.5 14M6 15h7"/></svg></span><span>Mapas</span></div>
+
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg></span><span>Fotos</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span><span>Llamadas</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg></span><span>Correo</span></div>
+              <div class="app-icon"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><span>Reloj</span></div>
+            </div>
+
+            <div class="app-dock">
+              <a class="app-icon app-icon-star" id="openVibeCheck" href="https://fponcela.github.io/viberano-2026-team9/app/" target="_blank" rel="noopener" aria-label="Abrir VibeCheck">
+                <span class="tile">
+                  <span class="tap-ring"></span>
+                  <span class="tap-ring delay"></span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h3.5l2-6 3 12 2.5-9 1.5 3h7.5"/></svg>
+                </span>
+                <span>VibeCheck</span>
+              </a>
+            </div>
+
+            <div class="home-indicator"><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav-chrome">
+  <span class="nav-counter" id="navCounter">01 / 05</span>
+  <div class="nav-controls">
+    <button class="nav-btn" id="homeBtn" aria-label="Ir a la primera slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+    </button>
+    <button class="nav-btn" id="prevBtn" aria-label="Anterior">‹</button>
+    <div class="dots" id="dots"></div>
+    <button class="nav-btn" id="nextBtn" aria-label="Siguiente">›</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var deck = document.getElementById('deck');
+    var slides = Array.prototype.slice.call(deck.children);
+    var dotsWrap = document.getElementById('dots');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var homeBtn = document.getElementById('homeBtn');
+    var current = 0;
+
+    slides.forEach(function (_, i) {
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Diapositiva ' + (i + 1));
+      if (i === 0) b.className = 'active';
+      b.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(b);
+    });
+
+    function setActive(i) {
+      current = i;
+      Array.prototype.forEach.call(dotsWrap.children, function (d, idx) {
+        d.classList.toggle('active', idx === i);
+      });
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = i === slides.length - 1;
+      var counter = document.getElementById('navCounter');
+      if (counter) {
+        counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      }
+    }
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      setActive(i);
+    }
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    homeBtn.addEventListener('click', function () { goTo(0); });
+
+    var openVibeCheck = document.getElementById('openVibeCheck');
+    if (openVibeCheck) {
+      openVibeCheck.addEventListener('click', function (e) {
+        var w = window.open(
+          openVibeCheck.href,
+          'vibecheckApp',
+          'width=402,height=874,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes,noopener'
+        );
+        if (w) { e.preventDefault(); }
+      });
+    }
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === ' ') { goTo(current + 1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { goTo(current - 1); e.preventDefault(); }
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+          setActive(slides.indexOf(entry.target));
+        }
+      });
+    }, { root: deck, threshold: [0.6] });
+    slides.forEach(function (s) { io.observe(s); });
+
+    function fillBars(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var n = 40;
+      for (var i = 0; i < n; i++) {
+        var bar = document.createElement('i');
+        var h = 0.15 + Math.random() * 0.85;
+        bar.style.setProperty('--h', h.toFixed(2));
+        bar.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+        el.appendChild(bar);
+      }
+    }
+    fillBars('heroBars');
+    fillBars('heroBarsEnd');
+    fillBars('heroBarsPS');
+    fillBars('heroBarsCompare');
+    fillBars('heroBarsFeatures');
+
+    function fillDayChart(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var heights = [0.08,0.05,0.04,0.04,0.05,0.09,0.16,0.24,0.3,0.26,0.22,0.28,0.34,0.3,0.24,0.2,0.26,0.36,0.5,0.66,0.8,0.94,1,0.62];
+      var peakIndex = 22;
+      heights.forEach(function (h, i) {
+        var bar = document.createElement('i');
+        bar.style.setProperty('--h', h);
+        bar.style.setProperty('--d', (i * 0.03).toFixed(2) + 's');
+        if (i === peakIndex) bar.classList.add('peak');
+        el.appendChild(bar);
+      });
+    }
+    fillDayChart('dayChart');
+
+    setActive(0);
+  })();
+</script>
+</body>
+</html>
